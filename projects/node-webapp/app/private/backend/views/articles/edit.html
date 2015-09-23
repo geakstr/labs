@@ -1,0 +1,12 @@
+<h1>Редактирование статьи</h1>
+
+<form class="form-add-content full-width" method="post">
+  <div><input type="text" name="title" placeholder="Заголовок статьи" value="<%= article.title %>"></div>
+  <div><textarea name="text" placeholder="Текст статьи"><%= article.text %></textarea></div>
+  <div><input type="text" name="tags" placeholder="Теги" value="<%= tags %>"></div>
+  <div style="margin: 11px 0;">
+    <label><input type="radio" name="visible" value="1" <% if (article.visible) { %> checked <% } %>> Общедоступная</label>
+    <label style="margin-left: 11px;"><input type="radio" name="visible" value="0" <% if (!article.visible) { %> checked <% } %>> Скрытая</label>
+  </div>
+  <div><input type="submit" value="Изменить"></div>
+</form>

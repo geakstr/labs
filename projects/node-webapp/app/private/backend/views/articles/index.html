@@ -1,0 +1,26 @@
+<% if (authenticated) { %>
+<h4><a href="/articles/compose" style="color: green;">Написать новую статью</a></h4>
+<% } %>
+
+
+<% for (var i = 0; i < content.length; i++) { %>
+<div class="article">
+<h2><a href="/articles/<%= content[i].id %>"><%= content[i].title %></a></h2>
+<div class="meta">
+  <a href="/users/profile/<%= content[i].user.login %>/"><%= content[i].user.login %></a> |
+  <%= content[i].createdAt %>
+  <% if (user_id == 1) { %> |
+    <% if (content[i].blocked) { %>
+      <a href="/admin/articles/<%= content[i].id %>/unblock" style="color: green;">Разблокировать</a>
+    <% } else { %>
+      <a href="/admin/articles/<%= content[i].id %>/block" style="color: red;">Заблокировать</a>
+    <% } %>
+  <% } else { %>
+    <% if (content[i].blocked) { %>
+      | <span style="color: red;">Заблокирована администратором</span>
+    <% } %>
+  <% } %>
+</div>
+  <%- content[i].html_text %>
+</div>
+<% } %>

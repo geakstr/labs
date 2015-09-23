@@ -1,0 +1,14 @@
+<% if (flash) { %>
+<div class="message error-message">
+  <%= flash %>
+</div>
+<% } %>
+
+<div class="auth-forms-wrapper cf">
+  <h1>Вход</h1>
+  <form action="/auth/login" method="post">
+    <div><input type="text" name="email" value="" placeholder="Электронная почта"></div>
+    <div><input type="password" name="pass" value="" placeholder="Пароль"></div> 
+    <div><input type="submit" class="success" value="Войти"></div>
+  </form>
+</div>

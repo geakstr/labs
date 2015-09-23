@@ -1,0 +1,41 @@
+<h4>Контент по запросу "<%= query %>"
+
+<h2 style="margin-top: 44px;">Статьи</h2>
+<% for (var i = 0; i < articles.length; i++) { var article = articles[i]; %>
+<div class="article">
+<h3><a href="/articles/<%= article.id %>"><%= article.title %></a></h3>
+<div class="meta">
+  <a href="/users/profile/<%= article.user.login %>/"><%= article.user.login %></a> |
+  <%= article.createdAt %>
+  <% if (user_id == 1) { %> |
+    <% if (article.blocked) { %>
+      <a href="/admin/articles/<%= article.id %>/unblock" style="color: green;">Разблокировать</a>
+    <% } else { %>
+      <a href="/admin/articles/<%= article.id %>/block" style="color: red;">Заблокировать</a>
+    <% } %>
+  <% } %>
+</div>
+</div>
+<% } %>
+
+
+<h2 style="margin-top: 44px;">Теги</h2>
+<ul>
+<% for (var i = 0; i < tags.length; i++) { %>
+<li>
+  <a href="/tags/<%= tags[i].id %>"><%= tags[i].title %></a>
+  <% if (user_id == 1) { %>
+    <small><b><a href="/admin/tags/<%= tags[i].id %>/delete" style="color: red; border-bottom: none;" title="Удалить">×</a></b></small>
+  <% } %>
+</li>
+<% } %>
+</ul>
+
+<h2 style="margin-top: 44px;">Пользователи</h2>
+<ul>
+<% for (var i = 0; i < users.length; i++) { %>
+<li>
+  <a href="/users/profile/<%= users[i].login %>"><%= users[i].login %></a>
+</li>
+<% } %>
+</ul>

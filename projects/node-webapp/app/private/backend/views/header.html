@@ -1,0 +1,15 @@
+<div id="header" class="wrapper">
+  <a href="/">Статьи</a>
+  <a href="/tags">Теги</a>
+  <a href="/users">Пользователи</a>
+  <% if (!authenticated) { %>
+    <a href="/login">Войти</a>
+    <a href="/signup">Зарегистрироваться</a>
+  <% } else { %>
+    <a href="/users/profile">Профиль</a>
+    <a href="/auth/logout">Выйти</a>
+  <% } %>
+  <form action="/search" method="get" style="margin: 0; padding: 0; display: inline;">
+  <input style="height: 18px; color: #000; line-height: 18px; font-size: 14px; width: 300px; float: right;" type="text" name="q" placeholder="Поиск">
+  </form>
+</div>

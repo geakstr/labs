@@ -1,0 +1,11 @@
+<h1>Список тегов</h1>
+<ul>
+<% for (var i = 0; i < tags.length; i++) { %>
+<li>
+  <a href="/tags/<%= tags[i].id %>"><%= tags[i].title %></a>
+  <% if (user_id == 1) { %>
+    <small><b><a href="/admin/tags/<%= tags[i].id %>/delete" style="color: red; border-bottom: none;" title="Удалить">×</a></b></small>
+  <% } %>
+</li>
+<% } %>
+</ul>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Lab 5</title>
+	<h:outputStylesheet name="css/style.css" />
+
+</h:head>
+<f:metadata>
+	<f:viewParam name="sort" value="#{booksBean.sort}" />
+	<f:viewParam name="search" value="#{booksBean.search}" />
+	<f:viewParam name="genre" value="#{booksBean.genre}" />
+	<f:viewAction action="#{booksBean.init}" />
+</f:metadata>
+<h:body>
+	<f:view>
+		<h1>
+			<h:outputText value="Книги" />
+		</h1>
+		
+		<h:form>
+			<div>
+				<h:outputLabel value="Поиск" />
+				<div>
+					<h:inputText value="#{booksBean.search}" />
+				</div>
+				<h:commandButton value="Найти" action="index?faces-redirect=true&amp;includeViewParams=true"/>
+			</div>
+		</h:form>
+		
+		<h:form id="select_genre_form">
+			<h:selectOneMenu value="#{booksBean.genre}" onchange="submit()" valueChangeListener="#{booksBean.genreSelectedAction}">
+			    <f:selectItem itemValue="#{null}" itemLabel="Жанр" />
+			    <f:selectItems value="#{booksBean.genres}" />
+			</h:selectOneMenu>
+		</h:form>
+		
+		<h:dataTable value="#{booksBean.books}" var="book">
+			<h:column>
+				<f:facet name="header">
+					<h:link value="Название" outcome="index">
+						<f:param name="sort" value="title" />
+					</h:link>
+				</f:facet>
+				<h:link value="#{book.name}" outcome="manage_book">
+					<f:param name="action" value="edit" />
+					<f:param name="id" value="#{book.id}" />
+				</h:link>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Автор" />
+				</f:facet>
+				<h:outputText value="#{book.author}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Жанр" />
+				</f:facet>
+				<h:outputText value="#{book.genre}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Издательство" />
+				</f:facet>
+				<h:outputText value="#{book.publishing}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:link value="Год" outcome="index">
+						<f:param name="sort" value="year" />
+					</h:link>
+				</f:facet>
+				<h:outputText value="#{book.yearOfPublishing}" />
+			</h:column>
+		</h:dataTable>
+		<h:link value="Создать книгу" outcome="manage_book"
+			styleClass="pretty-button">
+			<f:param name="action" value="create" />
+		</h:link>
+	</f:view>
+</h:body>
+</html>

@@ -1,0 +1,11 @@
+<h4>Статьи с тегом "<%= tag.title %>"
+<% if (user_id == 1) { %>
+    <small><b><a href="/admin/tags/<%= tag.id %>/delete" style="color: red; border-bottom: none;" title="Удалить">×</a></b></small>
+  <% } %></h4>
+<ol>
+<% for (var i = 0; i < articles.length; i++) { %>
+<li class="article">
+<h3><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></h3>
+</li>
+<% } %>
+</ol>

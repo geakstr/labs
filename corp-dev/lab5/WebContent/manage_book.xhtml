@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Lab 5</title>
+	<h:outputStylesheet name="css/style.css" />
+</h:head>
+<f:metadata>
+	<f:viewParam name="id" value="#{manageBookBean.id}" />
+	<f:viewParam name="action" value="#{manageBookBean.action}" />
+	<f:viewAction action="#{manageBookBean.init}" />
+</f:metadata>
+<h:body>
+	<f:view>
+		<h1>
+			<h:link value="На главную" outcome="index" />
+		</h1>
+
+		<h2>
+			<h:outputText value="Создание книги"
+				rendered="#{manageBookBean.createChoice}" />
+			<h:outputText value="Редактирование книги"
+				rendered="#{manageBookBean.editDeleteChoice}" />
+		</h2>
+
+		<h:panelGroup layout="block"
+			rendered="#{manageBookBean.editDeleteChoice}">
+			<h3>
+				«
+				<h:outputText value="#{manageBookBean.book.name}" />
+				»
+			</h3>
+		</h:panelGroup>
+
+		<h:form styleClass="create-book-form">
+			<div>
+				<h:outputLabel value="Название" />
+				<h:inputText value="#{manageBookBean.book.name}" />
+			</div>
+			<div>
+				<h:outputLabel value="Автор" />
+				<h:inputText value="#{manageBookBean.book.author}" />
+			</div>
+			<div>
+				<h:outputLabel value="Жанр" />
+				<h:inputText value="#{manageBookBean.book.genre}" />
+			</div>
+			<div>
+				<h:outputLabel value="Год" />
+				<h:inputText value="#{manageBookBean.book.yearOfPublishing}" />
+			</div>
+			<div>
+				<h:outputLabel value="Издательство" />
+				<h:inputText value="#{manageBookBean.book.publishing}" />
+			</div>
+
+			<h:commandButton value="Создать"
+				rendered="#{manageBookBean.createChoice}" styleClass="pretty-button"
+				action="#{manageBookBean.createBookAction}" />
+
+			<h:commandButton value="Изменить"
+				rendered="#{manageBookBean.editDeleteChoice}"
+				styleClass="pretty-button" action="#{manageBookBean.editBookAction}" />
+
+			<h:commandButton value="Удалить"
+				rendered="#{manageBookBean.editDeleteChoice}"
+				styleClass="pretty-button"
+				action="#{manageBookBean.deleteBookAction}" />
+		</h:form>
+	</f:view>
+</h:body>
+</html>

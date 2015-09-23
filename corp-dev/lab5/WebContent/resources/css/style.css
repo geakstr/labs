@@ -1,0 +1,88 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 44px auto;
+	width: 80%;
+	background: #fff;
+	color: #333;
+	font-family: Ubuntu, sans-serif;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+h1 {
+	font-size: 22px;
+	line-height: 22px;
+	margin-bottom: 27px;
+}
+
+h1 a {
+	color: orange;
+}
+
+h2 {
+	font-size: 20px;
+	line-height: 22px;
+	margin-bottom: 22px;
+}
+
+h3 {
+	font-size: 18px;
+	line-height: 22px;
+	margin-bottom: 17px;
+}
+
+table {
+    width: 100%;
+	border: 0;
+	border-collapse: collapse;
+}
+
+td, th {
+	border: 1px solid #ccc;
+	padding: 7px;
+}
+
+th {
+	text-align: left;
+}
+
+form, table {
+	margin-bottom: 22px;
+}
+
+form label {
+	display: block;
+	font-weight: 700;
+}
+
+.pretty-button {
+	display: inline-block;
+	background: green;
+	color: #fff;
+	padding: 3px 5px;
+	border-radius: 2px;
+	text-decoration: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	margin-right: 11px;
+}
+
+.pretty-button:hover {
+	color: #efefef;
+}
+
+.pretty-button:active {
+	color: #ccc;
+}
+
+.create-book-form input[type=text] {
+	width: 250px;
+}
+.create-book-form div {
+    margin-bottom: 11px;
+}

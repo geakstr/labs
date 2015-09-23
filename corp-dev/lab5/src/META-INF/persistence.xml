@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<!-- Определяем Persistence Unit и метод управления транзакциями Т.к. данное 
+		приложение работает не в составе JEE контейнера, используем ручное управление 
+		транзакциями -->
+	<persistence-unit name="Library" transaction-type="RESOURCE_LOCAL">
+		<!-- Указываем, что провайдером JPA будет являться Hibernate -->
+		<provider> org.hibernate.ejb.HibernatePersistence</provider>
+		<properties>
+			<!-- КОнфигурация Hibernate для работы с HSQL -->
+			<property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver" />
+			<property name="hibernate.connection.url" value="jdbc:hsqldb:mem:library" />
+			<property name="hibernate.connection.username" value="SA" />
+			<property name="hibernate.connection.password" value="" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+
+			<!-- Вывод всех генерируемых HIbernate SQL запросов, используется для 
+				отладки -->
+			<property name="hibernate.show_sql" value="true" />
+
+			<!-- Автоматическое создание таблиц БД при каждом запуске на основе классов-сущностей -->
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+
+		</properties>
+
+	</persistence-unit>
+</persistence>

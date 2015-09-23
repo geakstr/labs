@@ -1,0 +1,27 @@
+<div class="auth-forms-wrapper cf">
+  <h1>Редактирование профиля</h1>
+  <form action="/users/profile/<%= user.login %>/edit" method="post" class="user-edit-form">
+    <div>
+      <label><b>Логин</b></label>:
+      <input type="text" name="login" value="<%= user.login %>" disabled>
+    </div>
+    <div>
+      <label><b>Электронная почта</b></label>:
+      <input type="text" name="email" value="<%= user.email %>">
+    </div>
+    <div>
+      <label><b>ФИО</b></label>:
+      <input type="text" name="fio" value="<%= user.fio %>">
+    </div>
+    <div>
+      <label><b>Пароль (оставьте пустым, если не хотите изменять)</b></label>:
+      <input type="password" name="pass" value="">
+    </div>
+    <input type="submit" class="success" value="Исправить">
+    <% if (flash) { %>
+    <div class="flash-message">
+      <%= flash %>
+    </div>
+    <% } %>
+  </form>
+</div>

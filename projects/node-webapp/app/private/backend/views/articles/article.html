@@ -1,0 +1,26 @@
+<h1><%= article.title %></h1>
+<% if (editable) { %>
+<h4><a href="/articles/<%= article.id %>/edit">Редактировать</a></h4>
+<% } %>
+<div class="article">
+<div class="meta">
+  <a href="/users/profile/<%= article.user.login %>/"><%= article.user.login %></a> |
+  <%= article.createdAt %>
+  <% if (user_id == 1) { %> |
+    <% if (article.blocked) { %>
+      <a href="/admin/articles/<%= article.id %>/unblock" style="color: green;">Разблокировать</a>
+    <% } else { %>
+      <a href="/admin/articles/<%= article.id %>/block" style="color: red;">Заблокировать</a>
+    <% } %>
+  <% } %>
+</div>
+<%- article.html_text %>
+
+<div class="meta">
+Теги: 
+<% for (var i = 0; i < article.tags.length; i++) { %>
+<% var tag = article.tags[i]; %>
+<a href="/tags/<%= tag.id %>"><%= tag.title %></a><% if (i !== article.tags.length - 1) { %> | <% } %>  
+<% } %>
+</div>
+</div>

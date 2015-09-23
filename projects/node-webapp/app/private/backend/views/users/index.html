@@ -1,0 +1,7 @@
+<h1>Все пользователи</h1>
+
+<ul>
+<% for (var i = 0; i < users.length; i++) { %>
+<li><a href="/users/profile/<%= users[i].login %>"><%= users[i].login %></a></li>
+<% } %>
+</ul>

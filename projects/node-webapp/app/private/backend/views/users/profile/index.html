@@ -1,0 +1,15 @@
+<% if (!mail_approved) { %>
+<span class="message info-message">
+ Подтвердите регистрацию на электронной почте
+</span>
+<% } %>
+
+<div><b>Логин</b>: <%= user.login %></div>
+<div><b>Электронная почта</b>: <%= user.email %></div>
+<div><b>ФИО</b>: <%= user.fio %></div>
+<div><a href="/users/profile/<%= user.login %>/articles/">Ваши статьи</a></div>
+<div><a href="/users/profile/<%= user.login %>/edit">Исправить данные</a></div>
+
+<% if (user_id === 1) { %>
+<div><a href="/admin/articles/blocked">Список заблокированных статей</a></div>
+<% } %>
