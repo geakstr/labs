@@ -1,0 +1,3 @@
+[submodule "projects/med-stat"]
+	path = projects/med-stat
+	url = git@github.com:geakstr/med-stat.git
