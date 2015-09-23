@@ -1,0 +1,15 @@
+Add: Currency: RUB, Amount: 100, Balance: 100
+Add: Currency: RUB, Amount: 100, Balance: 200
+Add: Currency: RUB, Amount: 100, Balance: 300
+Add: Currency: USD, Amount: 200, Balance: 200
+Add: Currency: USD, Amount: 200, Balance: 400
+Add: Currency: USD, Amount: 200, Balance: 600
+Add: Currency: USD, Amount: 200, Balance: 200
+Add: Currency: USD, Amount: 200, Balance: 400
+Add: Currency: USD, Amount: 200, Balance: 600
+Add: Currency: RUB, Amount: 100, Balance: 100
+Add: Currency: RUB, Amount: 100, Balance: 200
+Add: Currency: RUB, Amount: 100, Balance: 300
+Add: Currency: USD, Amount: 200, Balance: 200
+Add: Currency: USD, Amount: 200, Balance: 400
+Add: Currency: USD, Amount: 200, Balance: 600
