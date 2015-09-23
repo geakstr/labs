@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AppStore</title>
+</head>
+<body>
+
+<ol>
+  {% for app in apps %}
+  <li><a href="/apps{{app.url}}">{{ app.title }}</a></li>
+  {% endfor %}
+</ol>
+
+</body>
+</html>

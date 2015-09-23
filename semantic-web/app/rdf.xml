@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:apps="http://local-appstore/rdf#">
+
+  <rdf:Seq rdf:about="http://local-appstore/all-apps">
+    <rdf:li>
+      <rdf:Description rdf:about="http://local-appstore/apps/angry-birds-2">
+        <apps:title>Angry Birds 2</apps:title>
+        <apps:url>/angry-birds-2</apps:url>
+        <apps:description>Angry Birds возвращаются в продолжении самой знаменитой мобильной игры всех времен! Angry Birds 2 открывает новую эру стрельбы из рогаток: тебя ждет невероятная графика, сложные многоэтапные уровни, хитрые свинобоссы и еще большая разрушаемость игрового мира.</apps:description>
+        <apps:price>Free</apps:price>
+        <apps:size>91.6 Mb</apps:size>
+      </rdf:Description>
+    </rdf:li>
+    <rdf:li>
+      <rdf:Description rdf:about="http://local-appstore/apps/facebook">
+        <apps:title>Facebook</apps:title>
+        <apps:url>/facebook</apps:url>
+        <apps:description>Поддерживать связь с друзьями теперь легче простого!
+          • Узнайте, чем занимаются ваши друзья
+          • Получайте уведомления, когда ваши друзья комментируют ваши публикации и ставят отметки "Мне
+          нравится"
+          • Отсылайте сообщения, общайтесь в чате и создавайте групповую переписку
+          • Играйте и используйте любимые приложения</apps:description>
+        <apps:price>Free</apps:price>
+        <apps:size>95.9 Mb</apps:size>
+      </rdf:Description>
+    </rdf:li>
+  </rdf:Seq>
+
+</rdf:RDF> 
