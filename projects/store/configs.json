@@ -1,0 +1,15 @@
+{
+    "db" : {
+        "type" : "mysql",
+        "host" : "localhost",
+        "dbName" : "store",
+        "user" : "root",
+        "pass" : ""
+    },
+    "guard" : {
+        "add" : "admin",
+        "remove" : "admin",
+        "edit" : "admin",
+        "cart" : "user"
+    }
+}
