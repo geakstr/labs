@@ -1,0 +1,22 @@
+"{
+    \"WFLYCTL0080: Failed services\" => {\"jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"dao.jar\\\".INSTALL\" => \"org.jboss.msc.service.StartException in service jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"dao.jar\\\".INSTALL: WFLYSRV0153: Failed to process phase INSTALL of subdeployment \\\"dao.jar\\\" of deployment \\\"wrapper.ear\\\"
+    Caused by: org.jboss.as.server.deployment.DeploymentUnitProcessingException: WFLYEE0041: Component class me.geakstr.insapp.dao.UserDao for component UserDao has errors: 
+WFLYJPA0021: Cannot inject RESOURCE_LOCAL container managed EntityManagers using @PersistenceContext\"},
+    \"WFLYCTL0180: Services with missing/unavailable dependencies\" => [
+        \"jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"web.war\\\".component.\\\"javax.servlet.jsp.jstl.tlv.ScriptFreeTLV\\\".START is missing [jboss.persistenceunit.\\\"wrapper.ear/dao.jar#insapp-dao-layer-pu\\\"]\",
+        \"jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"dao.jar\\\".batch.environment is missing [jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"dao.jar\\\".beanmanager]\",
+        \"jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"web.war\\\".component.\\\"javax.faces.webapp.FacetTag\\\".START is missing [jboss.persistenceunit.\\\"wrapper.ear/dao.jar#insapp-dao-layer-pu\\\"]\",
+        \"jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"web.war\\\".component.\\\"com.sun.faces.config.ConfigureListener\\\".START is missing [jboss.persistenceunit.\\\"wrapper.ear/dao.jar#insapp-dao-layer-pu\\\"]\",
+        \"jboss.deployment.unit.\\\"wrapper.ear\\\".deploymentCompleteService is missing [jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"dao.jar\\\".deploymentCompleteService]\",
+        \"jboss.naming.context.java.comp.wrapper.business.AdminFacade.env.\\\"me.geakstr.insapp.ejb.facades.AdminFacade\\\".userDao is missing [jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"dao.jar\\\".component.UserDao.VIEW.\\\"me.geakstr.insapp.dao.UserDao\\\".LOCAL]\",
+        \"jboss.naming.context.java.comp.wrapper.dao.UserDao.ValidatorFactory is missing [jboss.naming.context.java.comp.wrapper.dao.UserDao]\",
+        \"jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"business.jar\\\".component.AdminFacade.START is missing [jboss.persistenceunit.\\\"wrapper.ear/dao.jar#insapp-dao-layer-pu\\\"]\",
+        \"jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"web.war\\\".component.\\\"javax.faces.webapp.FacesServlet\\\".START is missing [jboss.persistenceunit.\\\"wrapper.ear/dao.jar#insapp-dao-layer-pu\\\"]\",
+        \"jboss.naming.context.java.comp.wrapper.dao.UserDao.Validator is missing [jboss.naming.context.java.comp.wrapper.dao.UserDao]\",
+        \"jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"web.war\\\".component.\\\"javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV\\\".START is missing [jboss.persistenceunit.\\\"wrapper.ear/dao.jar#insapp-dao-layer-pu\\\"]\",
+        \"jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"dao.jar\\\".weld.weldClassIntrospector is missing [jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"dao.jar\\\".beanmanager]\",
+        \"jboss.naming.context.java.comp.wrapper.dao.UserDao.InAppClientContainer is missing [jboss.naming.context.java.comp.wrapper.dao.UserDao]\",
+        \"jboss.naming.context.java.comp.wrapper.dao.UserDao.InstanceName is missing [jboss.naming.context.java.comp.wrapper.dao.UserDao]\",
+        \"jboss.deployment.unit.\\\"wrapper.ear\\\".WeldStartService is missing [jboss.persistenceunit.\\\"wrapper.ear/dao.jar#insapp-dao-layer-pu\\\", jboss.deployment.subunit.\\\"wrapper.ear\\\".\\\"dao.jar\\\".jndiDependencyService]\"
+    ]
+}"
