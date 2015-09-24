@@ -3,11 +3,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	  xmlns:h="http://xmlns.jcp.org/jsf/html"
-	  xmlns:f="http://xmlns.jcp.org/jsf/core">
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <ui:composition template="/WEB-INF/template/layout.xhtml">
+	<ui:define name="title">Служба страхования</ui:define>
+	
 	<ui:define name="content">
-		<h:form><h:commandLink action="#{main.admin}" value="To admin"></h:commandLink></h:form>
+		<div class="header-line">
+		<c:choose>
+		    <c:when test="${ baseBean.sessionInfo.isAdmin() }">
+		        <a href="/views/admin/index.xhtml">Администратор</a> | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form>
+		    </c:when>
+		    <c:when test="${ baseBean.sessionInfo.isEmployee() }">
+		        <a href="/views/employee/index.xhtml">Сотрудник</a> | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form>
+		    </c:when>    
+		    <c:otherwise>
+		        <a href="/views/employee/index.xhtml">Сотрудник</a> | <a href="/views/admin/index.xhtml">Администратор</a>
+		    </c:otherwise>
+		</c:choose>
+		</div> 
 	</ui:define>
 </ui:composition>
 

@@ -1,0 +1,58 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 800px;
+	margin: 0 auto;
+	background: #fff;
+	font-family: Lucida Grande, Helvetica Neue, Verdana, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+a:link, a:visited {
+	color: blue;
+}
+
+a:hover {
+	color: red;
+}
+
+form span {
+	display: inline-block;
+}
+
+h1 {
+	font-size: 22px;
+	line-height: 22px;
+}
+
+h2 {
+	font-size: 20px;
+	line-height: 20px;
+}
+
+small {
+	font-size: 10px;
+}
+
+#header {
+	margin: 22px 0;
+}
+
+#header a {
+	text-decoration: none;
+}
+
+.header-line {
+	background: #efefef;
+	padding: 5px;
+	margin-left: -5px;
+	border-radius: 3px;
+}
+
+#footer {
+	margin: 22px 0;
+}
