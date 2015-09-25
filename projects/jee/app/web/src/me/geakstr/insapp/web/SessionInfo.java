@@ -3,6 +3,7 @@ package me.geakstr.insapp.web;
 public class SessionInfo {
 	public boolean isAdmin = false;
 	public boolean isEmployee = false;
+	public String name = "";
 
 	public boolean isAdmin() {
 		return isAdmin;
@@ -18,5 +19,13 @@ public class SessionInfo {
 
 	public void setEmployee(boolean isEmployee) {
 		this.isEmployee = isEmployee;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}	
 }

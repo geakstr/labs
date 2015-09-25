@@ -27,6 +27,10 @@ public class BaseBean {
 		if (context != null) {
 			sessionInfo.isAdmin = context.isUserInRole("ADMIN");
 			sessionInfo.isEmployee = context.isUserInRole("EMPLOYEE");
+			
+			if (request.getUserPrincipal() != null) {
+				sessionInfo.name = request.getUserPrincipal().getName();
+			}
 		}
 	}
 

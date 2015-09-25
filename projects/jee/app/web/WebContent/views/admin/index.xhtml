@@ -11,9 +11,6 @@
 	
 	<ui:define name="content">
 		<div class="header-line">Вы вошли как администратор |<h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form></div>
-		
-		<h:outputText value="#{ adminBean.sessionInfo.isAdmin() }"></h:outputText>
-		
 	</ui:define>
 </ui:composition>
 
