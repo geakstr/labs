@@ -2,15 +2,15 @@
 <application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/application_7.xsd" id="Application_ID" version="7">
   <display-name>wrapper</display-name>
   <module>
-    <ejb>dao.jar</ejb>
+    <web>
+      <web-uri>web.war</web-uri>
+      <context-root>web</context-root>
+    </web>
   </module>
   <module>
     <ejb>business.jar</ejb>
   </module>
   <module>
-    <web>
-      <web-uri>web.war</web-uri>
-      <context-root>/</context-root>
-    </web>
+    <ejb>dao.jar</ejb>
   </module>
 </application>

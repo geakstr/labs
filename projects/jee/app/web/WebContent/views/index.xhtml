@@ -13,13 +13,13 @@
 		<div class="header-line">
 		<c:choose>
 		    <c:when test="${ baseBean.sessionInfo.isAdmin() }">
-		        <a href="/views/admin/index.xhtml">Администратор</a> | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form>
+		        <a href="/web/views/admin/index.xhtml">Администратор</a> | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form>
 		    </c:when>
 		    <c:when test="${ baseBean.sessionInfo.isEmployee() }">
-		        <a href="/views/employee/index.xhtml">Сотрудник</a> | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form>
+		        <a href="/web/views/employee/index.xhtml">Сотрудник</a> | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form>
 		    </c:when>    
 		    <c:otherwise>
-		        <a href="/views/employee/index.xhtml">Сотрудник</a> | <a href="/views/admin/index.xhtml">Администратор</a>
+		        <a href="/web/views/employee/index.xhtml">Сотрудник</a> | <a href="/web/views/admin/index.xhtml">Администратор</a>
 		    </c:otherwise>
 		</c:choose>
 		</div> 

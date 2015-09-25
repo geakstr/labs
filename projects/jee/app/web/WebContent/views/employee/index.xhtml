@@ -9,7 +9,7 @@
 	<ui:define name="title">Панель сотрудника</ui:define>
 	
 	<ui:define name="content">
-		<div class="header-line">Вы вошли как сотрудник | <a href="/views/logout.xhtml">Выйти</a></div>
+		<div class="header-line">Вы вошли как сотрудник | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form></div>
 		
 		<h:outputText value="#{ adminBean.sessionInfo.isAdmin() }"></h:outputText>
 	</ui:define>

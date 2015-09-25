@@ -17,6 +17,6 @@ public class LogoutBean extends BaseBean {
 	        request.getSession(false).invalidate();
 	    }
 	    request.logout();
-	    response.sendRedirect("/views/index.xhtml");
+	    response.sendRedirect("/web/views/index.xhtml");
 	}
 }
