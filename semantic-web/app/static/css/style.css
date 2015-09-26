@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 960px;
+  margin: 0 auto;
+  background: #efefef;
+  font-family: Ubuntu, sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  color: #333;
+}
+
+a {
+  outline: none;
+}
+
+h1 {
+  margin-bottom: 44px;
+  margin-left: 22px;
+}
+
+h1 a {
+  color: #333;
+}
+
+h1 a:hover {
+  color: #999;
+}
+
+#content {
+  margin-top: 44px;
+  padding: 33px;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.ribbon {
+  margin-bottom: 22px;
+  padding: 22px;
+  background: #333;
+  border-radius: 7px;
+  color: #fff;
+}
+
+.ribbon .ribbon-title {
+  font-weight: 700;
+  margin-bottom: 11px;
+  margin-left: 7px;
+}
+
+.ribbon li {
+  display: block;
+  float: left;
+  list-style: none outside;
+  color: #fff;
+  width: 16%;
+  margin-right: 5%;
+}
+
+.ribbon li:last-child {
+  margin-right: 0;
+}
+
+.ribbon li a {
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.ribbon li a:hover {
+  color: #ccc;
+}
+
+.ribbon li img {
+  display: block;
+  width: 100%;
+  border-radius: 22px;
+}
+
+.ribbon .title {
+  padding: 7px 7px 0 7px;
+}
+
+.ribbon:last-child {
+  margin-bottom: 0;
+}
+
+#app {
+  padding: 0 22px;
+}
+
+#app .meta {
+  font-size: 12px;
+}
+
+#app .category-label {
+  display: inline-block;
+  background: #999;
+  padding: 0px 7px;
+  border-radius: 22px;
+  color: #fff;
+  margin: 11px 0;
+}
+
+#app .install-button {
+  background: green;
+  padding: 3px 7px;
+  color: #fff;
+  border-radius: 3px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#app .install-button:hover {
+  color: #ccc;
+}
+
+#app .left {
+  float: left;
+  width: 175px;
+}
+
+#app .right {
+  float: right;
+  width: 650px;
+}
+
+#app img {
+  border-radius: 22px;
+}

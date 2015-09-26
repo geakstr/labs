@@ -12,7 +12,7 @@ APPS = rdflib.Namespace('http://local-appstore/rdf#')
 
 @app.route("/")
 def index_page():
-    apps_list = []
+    apps_list = { 'Games' : [], 'Social' : [] }
 
     for triple in g.triples((rdflib.term.URIRef('http://local-appstore/all-apps'), None, None)):
         app_item = {}
@@ -27,8 +27,11 @@ def index_page():
                 app_item['description'] = description[2]
             for size in g.triples((app[0], APPS['size'], app[2])):
                 app_item['size'] = size[2]
+            for category in g.triples((app[0], APPS['category'], app[2])):
+                app_item['category'] = category[2]
+
         if len(app_item) > 0:
-            apps_list.append(app_item)
+            apps_list[app_item['category'].toPython()].append(app_item)
 
     return render_template('index.html', apps=apps_list)
 
@@ -46,6 +49,8 @@ def app_page(id):
             app_item['description'] = description[2]
         for size in g.triples((triple[0], APPS['size'], triple[2])):
             app_item['size'] = size[2]
+        for category in g.triples((triple[0], APPS['category'], triple[2])):
+            app_item['category'] = category[2]
 
     return render_template('app.html', app=app_item)
 

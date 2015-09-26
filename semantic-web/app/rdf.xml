@@ -12,20 +12,97 @@
         <apps:description>Angry Birds возвращаются в продолжении самой знаменитой мобильной игры всех времен! Angry Birds 2 открывает новую эру стрельбы из рогаток: тебя ждет невероятная графика, сложные многоэтапные уровни, хитрые свинобоссы и еще большая разрушаемость игрового мира.</apps:description>
         <apps:price>Free</apps:price>
         <apps:size>91.6 Mb</apps:size>
+        <apps:category>Games</apps:category>
+      </rdf:Description>
+    </rdf:li>
+    <rdf:li>
+      <rdf:Description rdf:about="http://local-appstore/apps/plants-vs-zombies">
+        <apps:title>Plants vs. Zombies</apps:title>
+        <apps:url>/plants-vs-zombies</apps:url>
+        <apps:description>Get ready to soil your plants as a mob of fun-loving zombies is about to invade your home. Use your arsenal of 49 zombie-zapping plants — peashooters, wall-nuts, cherry bombs and more — to mulchify 26 types of zombies before they break down your door.</apps:description>
+        <apps:price>$0.99</apps:price>
+        <apps:size>76 Mb</apps:size>
+        <apps:category>Games</apps:category>
+      </rdf:Description>
+    </rdf:li>
+    <rdf:li>
+      <rdf:Description rdf:about="http://local-appstore/apps/shadowmatic">
+        <apps:title>Shadowmatic</apps:title>
+        <apps:url>/shadowmatic</apps:url>
+        <apps:description>Shadowmatic - это 3D головоломка, в которой вам предстоит испытать свое воображение, вращая в луче света абстрактные трехмерные объекты и собирая из их теней на стене знакомые силуэты, соответствующие тематическому оформлению комнаты.</apps:description>
+        <apps:price>$1.99</apps:price>
+        <apps:size>257 Mb</apps:size>
+        <apps:category>Games</apps:category>
+      </rdf:Description>
+    </rdf:li>
+    <rdf:li>
+      <rdf:Description rdf:about="http://local-appstore/apps/minecraft-pe">
+        <apps:title>Minecraft</apps:title>
+        <apps:url>/minecraft-pe</apps:url>
+        <apps:description>В игре Minecraft вам предстоит складывать вместе различные блоки, а также участвовать в захватывающих приключениях.</apps:description>
+        <apps:price>$4.99</apps:price>
+        <apps:size>24.1 Mb</apps:size>
+        <apps:category>Games</apps:category>
+      </rdf:Description>
+    </rdf:li>
+    <rdf:li>
+      <rdf:Description rdf:about="http://local-appstore/apps/doodle-jump">
+        <apps:title>Doodle Jump</apps:title>
+        <apps:url>/doodle-jump</apps:url>
+        <apps:description>Doodle Jump, you guide Doodle the Doodler—using some of the most subtle and accurate tilt controls in existence—on a springy journey up, up, up a sheet of graph paper, picking up jet packs, avoiding black holes, and blasting baddies with nose balls along the way.</apps:description>
+        <apps:price>$0.99</apps:price>
+        <apps:size>35.6 Mb</apps:size>
+        <apps:category>Games</apps:category>
       </rdf:Description>
     </rdf:li>
     <rdf:li>
       <rdf:Description rdf:about="http://local-appstore/apps/facebook">
         <apps:title>Facebook</apps:title>
         <apps:url>/facebook</apps:url>
-        <apps:description>Поддерживать связь с друзьями теперь легче простого!
-          • Узнайте, чем занимаются ваши друзья
-          • Получайте уведомления, когда ваши друзья комментируют ваши публикации и ставят отметки "Мне
-          нравится"
-          • Отсылайте сообщения, общайтесь в чате и создавайте групповую переписку
-          • Играйте и используйте любимые приложения</apps:description>
+        <apps:description>Поддерживать связь с друзьями теперь легче простого!</apps:description>
         <apps:price>Free</apps:price>
         <apps:size>95.9 Mb</apps:size>
+        <apps:category>Social</apps:category>
+      </rdf:Description>
+    </rdf:li>
+    <rdf:li>
+      <rdf:Description rdf:about="http://local-appstore/apps/twitter">
+        <apps:title>Twitter</apps:title>
+        <apps:url>/twitter</apps:url>
+        <apps:description>Твиттер — это лучший способ выразить себя: общайтесь и оставайтесь в курсе событий.</apps:description>
+        <apps:price>Free</apps:price>
+        <apps:size>63.9 Mb</apps:size>
+        <apps:category>Social</apps:category>
+      </rdf:Description>
+    </rdf:li>
+    <rdf:li>
+      <rdf:Description rdf:about="http://local-appstore/apps/vk">
+        <apps:title>VK</apps:title>
+        <apps:url>/vk</apps:url>
+        <apps:description>ВКонтакте — это социальная сеть для быстрой и удобной коммуникации между людьми по всему миру. Вы можете обмениваться сообщениями и делиться фотографиями, следить за новостями Ваших друзей и заводить новые знакомства, смотреть видеозаписи, вступать в сообщества и играть в игры.</apps:description>
+        <apps:price>Free</apps:price>
+        <apps:size>14.7 Mb</apps:size>
+        <apps:category>Social</apps:category>
+      </rdf:Description>
+    </rdf:li>
+    <rdf:li>
+      <rdf:Description rdf:about="http://local-appstore/apps/telegram">
+        <apps:title>Telegram</apps:title>
+        <apps:url>/telegram</apps:url>
+        <apps:description>Telegram is a messaging app with a focus on speed and security. It’s superfast, simple, secure and free.</apps:description>
+        <apps:price>Free</apps:price>
+        <apps:size>36.1 Mb</apps:size>
+        <apps:category>Social</apps:category>
+      </rdf:Description>
+    </rdf:li>
+    <rdf:li>
+      <rdf:Description rdf:about="http://local-appstore/apps/whatsapp">
+        <apps:title>WhatsApp</apps:title>
+        <apps:url>/whatsapp</apps:url>
+        <apps:description>WhatsApp Messenger - это приложение для iPhone и других смартфонов. WhatsApp использует Интернет-подключение вашего телефона (4G/3G/2G/EDGE или WiFi) для обмена сообщениями и совершения звонков. Перейдите с SMS на WhatsApp и обменивайтесь текстовыми/голосовыми сообщениями, звонками, фото и видео. </apps:description>
+        <apps:price>Free</apps:price>
+        <apps:size>49.5 Mb</apps:size>
+        <apps:category>Social</apps:category>
       </rdf:Description>
     </rdf:li>
   </rdf:Seq>

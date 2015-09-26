@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>AppStore</title>
+  <meta charset="utf-8">
+  <title>AppStore</title>
+  <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
 
-<ol>
-  {% for app in apps %}
-  <li><a href="/apps{{app.url}}">{{ app.title }}</a></li>
-  {% endfor %}
-</ol>
+
+<div id="content">
+  <h1>AppStore</h1>
+
+  <div class="ribbon">
+    <div class="ribbon-title">Games</div>
+    <ol>
+      {% for app in apps.Games %}
+      <li>
+        <a href="/apps{{app.url}}">
+          <img src="/static/images{{app.url}}.png">
+          <div class="title">{{ app.title }}</div>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+    <div style="clear: both;"></div>
+  </div>
+
+  <div class="ribbon">
+    <div class="ribbon-title">Social</div>
+    <ol>
+      {% for app in apps.Social %}
+      <li>
+        <a href="/apps{{app.url}}">
+          <img src="/static/images{{app.url}}.png">
+          <div class="title">{{ app.title }}</div>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+    <div style="clear: both;"></div>
+  </div>
+</div>
 
 </body>
 </html>

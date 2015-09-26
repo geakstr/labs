@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>AppStore</title>
+  <meta charset="utf-8">
+  <title>AppStore</title>
+  <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
 
-<h1><a href="/">AppStore</a></h1>
-<h2>{{ app.title }}</h2>
-<p><em>{{ app.description }}</em></p>
+
+<div id="content">
+  <h1><a href="/">AppStore</a></h1>
+
+  <div id="app">
+    <h2>{{ app.title }}</h2>
+    <div class="meta"><span class="category-label">{{ app.category }}</span> | {{ app.price }} | {{ app.size }}</div>
+    <div style="clear: both;"></div>
+    <div class="left">
+      <img src="/static/images{{app.url}}.png">
+      <div class="install-button">Install</div>
+    </div>
+    <div class="right">
+      <p>{{ app.description }}</p>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+</div>
 
 </body>
 </html>
