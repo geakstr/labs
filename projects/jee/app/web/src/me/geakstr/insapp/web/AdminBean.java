@@ -1,10 +1,69 @@
 package me.geakstr.insapp.web;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+
+import me.geakstr.insapp.business.facades.AdminFacade;
+import me.geakstr.insapp.dao.entities.User;
 
 @ManagedBean
-@RequestScoped
-public class AdminBean extends BaseBean {
+@ViewScoped
+public class AdminBean extends BaseBean implements Serializable {
+	private static final long serialVersionUID = -4441502845475755582L;
 
+	@EJB
+	private AdminFacade adminFacade;
+	
+	private List<User> users;
+	private User user = new User();
+	private boolean edit;
+	
+	@PostConstruct
+	public void init() {
+		users = adminFacade.getAllUsers();
+	}
+	
+	public void add() {
+        users.add(user);
+        
+        adminFacade.addUser(user);
+        
+        user = new User();
+    }
+
+	
+	public void edit(final User user) {
+		this.user = user;
+		
+		edit = true;
+	}
+	
+	public void save() {
+		System.out.println("gfdgdfgdfgdf");
+		adminFacade.editUser(user);
+        user = new User();
+        edit = false;
+    }
+	
+	public void delete(final User user) {
+		adminFacade.deleteUser(user);
+        users.remove(user);
+    }
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public User getUser() {
+        return user;
+    }
+
+    public boolean isEdit() {
+        return edit;
+    }
 }

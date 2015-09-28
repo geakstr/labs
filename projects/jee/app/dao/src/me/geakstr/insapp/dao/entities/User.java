@@ -14,6 +14,30 @@ public class User {
 
 	@Column(nullable = false, unique = false)
 	private String password;
+	
+	@Column(nullable = false, unique = false)
+	private String fio;
+	
+	@Column(nullable = false, unique = false)
+	private String role;
+
+	public String getFio() {
+		return fio;
+	}
+
+	public void setFio(String fio) {
+		this.fio = fio;
+	}
+	
+	
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	public String getUsername() {
 		return username;
@@ -34,8 +58,10 @@ public class User {
 	@Override
 	public String toString() {
 		return String.format(
-				"User : username = %s; password = %s",
+				"User : fio = %s; username = %s; role = %s; password = %s",
+				fio,
 				username,
+				role,
 				password);
 	}
 }

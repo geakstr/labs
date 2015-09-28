@@ -13,12 +13,15 @@ public class UserDao extends AbstractDao<User> {
 	}
 
 	public User getUserByUsernameAndPassword(final String username, final String password) {
-		@SuppressWarnings("unchecked")
 		final List<User> result = em.createQuery("SELECT u FROM User u WHERE u.username = :username AND u.password = :password")
 						  .setParameter("username", username)
 					      .setParameter("password", password)
 					      .getResultList();
 		
 		return result.isEmpty() ? null : result.get(0);
+	}
+	
+	public List<User> getAllUsers() {
+		return em.createQuery("SELECT u FROM User u").getResultList();
 	}
 }

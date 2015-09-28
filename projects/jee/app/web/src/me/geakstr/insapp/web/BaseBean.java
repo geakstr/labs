@@ -2,14 +2,14 @@ package me.geakstr.insapp.web;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class BaseBean {
 	private ExternalContext context;
 	protected HttpServletRequest request;
