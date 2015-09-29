@@ -10,27 +10,30 @@ import org.jboss.security.auth.spi.Util;
 import me.geakstr.insapp.dao.UserDao;
 import me.geakstr.insapp.dao.entities.User;
 
-
 @Stateless
-public class AdminFacade {
+public class AdminFacade implements ICrudFacade<User> {
 	@EJB
 	private UserDao userDao;
 
-	public List<User> getAllUsers() {
+	@Override
+	public List<User> getAll() {
 		return userDao.getAllUsers();
 	}
-	
-	public void deleteUser(final User user) {
+
+	@Override
+	public void delete(final User user) {
 		userDao.remove(user);
 	}
-	
-	public void addUser(final User user) {
+
+	@Override
+	public void add(final User user) {
 		user.setPassword(Util.createPasswordHash("SHA-256", "BASE64", null, null, user.getPassword()));
 		user.setRole("EMPLOYEE");
 		userDao.create(user);
 	}
-	
-	public void editUser(final User user) {
+
+	@Override
+	public void edit(final User user) {
 		userDao.edit(user);
 	}
 }

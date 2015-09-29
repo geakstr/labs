@@ -8,9 +8,9 @@
     </web>
   </module>
   <module>
-    <ejb>business.jar</ejb>
+    <ejb>dao.jar</ejb>
   </module>
   <module>
-    <ejb>dao.jar</ejb>
+    <ejb>business.jar</ejb>
   </module>
 </application>

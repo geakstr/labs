@@ -13,9 +13,9 @@
 		<div class="header-line">Вы вошли как администратор | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form></div>
 	
 		<h:panelGroup rendered="#{adminBean.edit}">
-            <h3>Редактирование пользователя #{adminBean.user.username} (#{adminBean.user.fio})</h3>
+            <h3>Редактирование пользователя #{adminBean.item.username} (#{adminBean.item.fio})</h3>
             <h:form>
-                <p>ФИО: <h:inputText value="#{adminBean.user.fio}" /></p>
+                <p>ФИО: <h:inputText value="#{adminBean.item.fio}" /></p>
                 <p><h:commandButton value="Сохранить" action="#{adminBean.save}" /></p>
             </h:form>
         </h:panelGroup>
@@ -23,19 +23,19 @@
         <h:panelGroup rendered="#{!adminBean.edit}">
             <h3>Добавление пользователя</h3>
             <h:form>
-            	<p>ФИО: <h:inputText value="#{adminBean.user.fio}" /></p>
-                <p>Логин: <h:inputText value="#{adminBean.user.username}" /></p>
-                <p>Пароль: <h:inputText value="#{adminBean.user.password}" /></p>
+            	<p>ФИО: <h:inputText value="#{adminBean.item.fio}" /></p>
+                <p>Логин: <h:inputText value="#{adminBean.item.username}" /></p>
+                <p>Пароль: <h:inputText value="#{adminBean.item.password}" /></p>
                 <p><h:commandButton value="Добавить" action="#{adminBean.add}" /></p>
             </h:form>
         </h:panelGroup>
         
-		<h:form rendered="#{not empty adminBean.users}">
-			<h:dataTable value="#{adminBean.users}" var="user">
-				<h:column><f:facet name="header">ФИО</f:facet>#{user.fio}</h:column>
-				<h:column><f:facet name="header">Логин</f:facet>#{user.username}</h:column>
-				<h:column><h:commandButton value="edit" action="#{adminBean.edit(user)}" /></h:column>
-	            <h:column><h:commandButton value="delete" action="#{adminBean.delete(user)}" /></h:column>
+		<h:form rendered="#{not empty adminBean.items}">
+			<h:dataTable value="#{adminBean.items}" var="item">
+				<h:column><f:facet name="header">ФИО</f:facet>#{item.fio}</h:column>
+				<h:column><f:facet name="header">Логин</f:facet>#{item.username}</h:column>
+				<h:column><h:commandButton value="edit" action="#{adminBean.edit(item)}" /></h:column>
+	            <h:column><h:commandButton value="delete" action="#{adminBean.delete(item)}" /></h:column>
 			</h:dataTable>
 		</h:form>
         

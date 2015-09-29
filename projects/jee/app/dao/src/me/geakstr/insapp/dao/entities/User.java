@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements IEntity {
 	@Id
 	@Column(nullable = false)
 	private String username;
