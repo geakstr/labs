@@ -11,6 +11,12 @@ public class DriverInsurancesCoeffsDao extends AbstractDao<DriverInsuranceCoeff>
 	public DriverInsurancesCoeffsDao() {
 		super(DriverInsuranceCoeff.class);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<DriverInsuranceCoeff> getAllCoeffs() {
+		return em.createQuery("SELECT d From DriverInsuranceCoeff d")
+				.getResultList();
+	}
 
 	@SuppressWarnings("unchecked")
 	public DriverInsuranceCoeff getInsuranceByDriverLicense(final String driverLicense) {

@@ -6,23 +6,22 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
-import me.geakstr.insapp.api.dao.DriverInsurancesCoeffsDao;
 import me.geakstr.insapp.api.entities.DriverInsuranceCoeff;
+import me.geakstr.insapp.api.facades.InsuranceCoeffsFacade;
 import me.geakstr.insapp.api.responses.DriverInsuranceCoeffResponse;
 
 @Stateless
-@Path("/")
+@Path("/rest")
 public class Rest {
 	@EJB
-	private DriverInsurancesCoeffsDao driverInsurancesCoeffsDao;
-	
+	private InsuranceCoeffsFacade insuranceCoeffsFacade;
+
 	@GET
 	@Path("/{license}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces("application/json; charset=UTF-8")
 	public DriverInsuranceCoeffResponse license(@PathParam("license") final String license) {
-		final DriverInsuranceCoeff res = driverInsurancesCoeffsDao.getInsuranceByDriverLicense(license);
+		final DriverInsuranceCoeff res = insuranceCoeffsFacade.getInsuranceByDriverLicense(license);
 		if (res == null) {
 			return new DriverInsuranceCoeffResponse(null, null);
 		}

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title><ui:insert name="title">Главная страница</ui:insert></title>
+</head>
+<body>
+<h:panelGroup rendered="#{!insuranceCoeffsBean.edit}">
+    <h3>Добавление коэффициента водителю</h3>
+    <h:form>
+    	<p>Лицензия: <h:inputText value="#{insuranceCoeffsBean.coeff.driver_license}" /></p>
+        <p>ФИО: <h:inputText value="#{insuranceCoeffsBean.coeff.fio}" /></p>
+        <p>Коэффицент: <h:inputText value="#{insuranceCoeffsBean.coeff.coeff}" /></p>
+        <p><h:commandButton value="Добавить" action="#{insuranceCoeffsBean.add}" /></p>
+    </h:form>
+</h:panelGroup>
+
+<h:panelGroup rendered="#{insuranceCoeffsBean.edit}">
+    <h3>Редактирование данных для лицензии №#{insuranceCoeffsBean.coeff.driver_license}</h3>
+    <h:form>
+        <p>ФИО: <h:inputText value="#{insuranceCoeffsBean.coeff.fio}" /></p>
+        <p>Коэффициент: <h:inputText value="#{insuranceCoeffsBean.coeff.coeff}" /></p>
+        <p><h:commandButton value="save" action="#{insuranceCoeffsBean.save}" /></p>
+    </h:form>
+</h:panelGroup>
+
+<h:form rendered="#{not empty insuranceCoeffsBean.allInsuranceCoeffs}">
+    <h:dataTable value="#{insuranceCoeffsBean.allInsuranceCoeffs}" var="item">
+    	<h:column><f:facet name="header">Лицензия</f:facet>#{item.driver_license}</h:column>
+        <h:column><f:facet name="header">ФИО</f:facet>#{item.fio}</h:column>
+        <h:column><f:facet name="header">Коэффициент</f:facet>#{item.coeff}</h:column>
+        <h:column><h:commandButton value="Редактировать" action="#{insuranceCoeffsBean.edit(item)}" /></h:column>
+        <h:column><h:commandButton value="Удалить" action="#{insuranceCoeffsBean.delete(item)}" /></h:column>
+    </h:dataTable>
+</h:form>
+
+</body>
+
+</html>
