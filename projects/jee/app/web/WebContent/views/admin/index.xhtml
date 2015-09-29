@@ -13,7 +13,7 @@
 		<div class="header-line">Вы вошли как администратор | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form></div>
 	
 		<h:panelGroup rendered="#{adminBean.edit}">
-            <h3>Редактирование пользователя #{adminBean.item.username} (#{adminBean.item.fio})</h3>
+            <h3>Редактирование сотрудника #{adminBean.item.username} (#{adminBean.item.fio})</h3>
             <h:form>
                 <p>ФИО: <h:inputText value="#{adminBean.item.fio}" /></p>
                 <p><h:commandButton value="Сохранить" action="#{adminBean.save}" /></p>
@@ -21,7 +21,7 @@
         </h:panelGroup>
         
         <h:panelGroup rendered="#{!adminBean.edit}">
-            <h3>Добавление пользователя</h3>
+            <h3>Добавление сотрудника</h3>
             <h:form>
             	<p>ФИО: <h:inputText value="#{adminBean.item.fio}" /></p>
                 <p>Логин: <h:inputText value="#{adminBean.item.username}" /></p>

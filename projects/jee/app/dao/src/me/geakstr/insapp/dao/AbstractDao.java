@@ -12,7 +12,7 @@ import javax.persistence.criteria.Root;
 public abstract class AbstractDao<T> {
 	@PersistenceContext(unitName = "insapp-dao-layer-pu")
 	protected EntityManager em;
-
+	
 	private Class<T> entityClass;
 
 	public AbstractDao(Class<T> entityClass) {

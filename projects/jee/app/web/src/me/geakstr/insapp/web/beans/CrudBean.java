@@ -13,7 +13,7 @@ import me.geakstr.insapp.dao.entities.IEntity;
 @ViewScoped
 public abstract class CrudBean<T extends IEntity, V extends ICrudFacade<T>> extends BaseBean {
 	@EJB
-	protected ICrudFacade<T> facade;
+	protected V facade;
 
 	protected List<T> items;
 	protected T item;
@@ -21,9 +21,9 @@ public abstract class CrudBean<T extends IEntity, V extends ICrudFacade<T>> exte
 
 	private Class<T> clazz;
 
-	protected void init(Class<T> clazz) {
+	protected void init(final Class<T> clazz) {
 		this.clazz = clazz;
-		items = facade.getAll();
+		items = facade.findAll();
 		try {
 			item = clazz.newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {

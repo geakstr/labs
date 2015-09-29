@@ -16,8 +16,8 @@ public class AdminFacade implements ICrudFacade<User> {
 	private UserDao userDao;
 
 	@Override
-	public List<User> getAll() {
-		return userDao.getAllUsers();
+	public List<User> findAll() {
+		return userDao.findAll();
 	}
 
 	@Override
