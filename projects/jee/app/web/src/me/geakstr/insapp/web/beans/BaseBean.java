@@ -1,4 +1,4 @@
-package me.geakstr.insapp.web;
+package me.geakstr.insapp.web.beans;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -7,6 +7,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import me.geakstr.insapp.web.SessionInfo;
 
 @ManagedBean
 @ViewScoped

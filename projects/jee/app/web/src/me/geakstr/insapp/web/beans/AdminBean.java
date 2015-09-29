@@ -1,6 +1,5 @@
-package me.geakstr.insapp.web;
+package me.geakstr.insapp.web.beans;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -13,9 +12,7 @@ import me.geakstr.insapp.dao.entities.User;
 
 @ManagedBean
 @ViewScoped
-public class AdminBean extends BaseBean implements Serializable {
-	private static final long serialVersionUID = -4441502845475755582L;
-
+public class AdminBean extends BaseBean {
 	@EJB
 	private AdminFacade adminFacade;
 	
@@ -30,21 +27,17 @@ public class AdminBean extends BaseBean implements Serializable {
 	
 	public void add() {
         users.add(user);
-        
         adminFacade.addUser(user);
-        
         user = new User();
     }
 
 	
 	public void edit(final User user) {
 		this.user = user;
-		
 		edit = true;
 	}
 	
 	public void save() {
-		System.out.println("gfdgdfgdfgdf");
 		adminFacade.editUser(user);
         user = new User();
         edit = false;

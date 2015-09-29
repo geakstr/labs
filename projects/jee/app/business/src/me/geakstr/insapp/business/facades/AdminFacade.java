@@ -2,7 +2,6 @@ package me.geakstr.insapp.business.facades;
 
 import java.util.List;
 
-
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 

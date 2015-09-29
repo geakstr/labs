@@ -1,9 +1,11 @@
-package me.geakstr.insapp.rest;
+package me.geakstr.insapp.api;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.ws.rs.ApplicationPath;
+
+import me.geakstr.insapp.api.rest.Rest;
 
 @ApplicationPath("/")
 public class Application extends javax.ws.rs.core.Application {

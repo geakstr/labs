@@ -1,4 +1,4 @@
-package me.geakstr.insapp.dao;
+package me.geakstr.insapp.api.dao;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import javax.persistence.criteria.Root;
 
 @Stateless
 public abstract class AbstractDao<T> {
-	@PersistenceContext(unitName = "insapp-dao-layer-pu")
+	@PersistenceContext(unitName = "rsaapp-pu")
 	protected EntityManager em;
 
 	private Class<T> entityClass;

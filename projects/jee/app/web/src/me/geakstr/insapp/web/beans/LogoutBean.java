@@ -1,13 +1,13 @@
-package me.geakstr.insapp.web;
+package me.geakstr.insapp.web.beans;
 
 import java.io.IOException;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.servlet.ServletException;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class LogoutBean extends BaseBean {	
 	public void logout() throws ServletException, IOException {
 		response.setHeader("Cache-Control", "no-cache, no-store");
