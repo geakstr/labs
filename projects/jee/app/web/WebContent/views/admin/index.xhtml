@@ -13,7 +13,7 @@
 		<div class="header-line">Вы вошли как администратор | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form></div>
 	
 		<h:panelGroup rendered="#{adminBean.edit}">
-            <h3>Редактирование сотрудника #{adminBean.item.username} (#{adminBean.item.fio})</h3>
+            <h3 style="margin: 33px 0 11px 0;">Редактирование сотрудника #{adminBean.item.fio} (#{adminBean.item.username})</h3>
             <h:form>
                 <p>ФИО: <h:inputText value="#{adminBean.item.fio}" /></p>
                 <p><h:commandButton value="Сохранить" action="#{adminBean.save}" /></p>
@@ -21,22 +21,28 @@
         </h:panelGroup>
         
         <h:panelGroup rendered="#{!adminBean.edit}">
-            <h3>Добавление сотрудника</h3>
+            <h3 style="margin: 33px 0 11px 0;">Добавление сотрудника</h3>
             <h:form>
-            	<p>ФИО: <h:inputText value="#{adminBean.item.fio}" /></p>
-                <p>Логин: <h:inputText value="#{adminBean.item.username}" /></p>
-                <p>Пароль: <h:inputText value="#{adminBean.item.password}" /></p>
+            	<p>ФИО: <h:inputText value="#{adminBean.item.fio}" /> | Логин: <h:inputText value="#{adminBean.item.username}" /> | Пароль: <h:inputText value="#{adminBean.item.password}" /></p>
                 <p><h:commandButton value="Добавить" action="#{adminBean.add}" /></p>
             </h:form>
         </h:panelGroup>
         
-		<h:form rendered="#{not empty adminBean.items}">
-			<h:dataTable value="#{adminBean.items}" var="item">
-				<h:column><f:facet name="header">ФИО</f:facet>#{item.fio}</h:column>
-				<h:column><f:facet name="header">Логин</f:facet>#{item.username}</h:column>
-				<h:column><h:commandButton value="edit" action="#{adminBean.edit(item)}" /></h:column>
-	            <h:column><h:commandButton value="delete" action="#{adminBean.delete(item)}" /></h:column>
-			</h:dataTable>
+		<h:form rendered="#{not empty adminBean.items and !adminBean.edit}">
+			<hr style="margin: 33px 0;"></hr>
+			<h3 style="margin: 33px 0 11px 0;">Список сотрудников</h3>
+			<div id="admin-table">
+				<h:dataTable id="admin-table" value="#{adminBean.items}" var="item">
+					<h:column><f:facet name="header">ФИО</f:facet>#{item.fio}</h:column>
+					<h:column><f:facet name="header">Логин</f:facet>#{item.username}</h:column>
+					<h:column><h:commandButton value="Редактировать" action="#{adminBean.edit(item)}" /></h:column>
+					<h:column>
+						<h:commandButton class="dangerous-button" rendered="#{item.role == 'EMPLOYEE'}" value="Заблокировать" action="#{adminBean.block(item)}" />
+						<h:commandButton class="good-button" rendered="#{item.role == 'BLOCKED'}" value="Разблокировать" action="#{adminBean.unblock(item)}" />
+					</h:column>
+		            <h:column><h:commandButton class="dangerous-button" value="Удалить" action="#{adminBean.delete(item)}" /></h:column>
+				</h:dataTable>
+			</div>
 		</h:form>
         
 	</ui:define>

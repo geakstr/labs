@@ -65,3 +65,37 @@ small {
 #footer {
 	margin: 22px 0;
 }
+
+table {
+	width: 100%;
+}
+
+table th {
+	text-align: left;
+}
+
+#admin-table table td {
+	width: 20%;
+}
+
+.dangerous-button {
+	background: red;
+	color: #fff;
+	padding: 2px 7px;
+	border: none;
+	border-radius: 3px;
+}
+.dangerous-button:hover {
+	color: #ccc;
+}
+
+.good-button {
+	background: green;
+	color: #fff;
+	padding: 2px 7px;
+	border: none;
+	border-radius: 3px;
+}
+.good-button:hover {
+	color: #ccc;
+}

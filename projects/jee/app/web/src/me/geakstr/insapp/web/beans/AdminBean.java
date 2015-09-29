@@ -14,4 +14,16 @@ public class AdminBean extends CrudBean<User, AdminFacade> {
 	public void init() {
 		init(User.class);
 	}
+	
+	public void block(final User user) {
+		user.setRole("BLOCKED");
+		edit(user);
+		save();
+	}
+	
+	public void unblock(final User user) {
+		user.setRole("EMPLOYEE");
+		edit(user);
+		save();
+	}
 }
