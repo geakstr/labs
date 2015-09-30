@@ -17,7 +17,7 @@ public class EmployeeDriverFacade implements ICrudFacade<Driver> {
 
 	@Override
 	public List<Driver> findAll() {
-		return driverDao.findAllDrivers();
+		return driverDao.findAll();
 	}
 
 	@Override

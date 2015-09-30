@@ -10,20 +10,72 @@
 	
 	<ui:define name="content">
 		<div class="header-line">Вы вошли как сотрудник | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form></div>
-	</ui:define>
 	
-	<h:form rendered="#{not empty driverBean.items and !driverBean.edit}">
+
 		<hr style="margin: 33px 0;"></hr>
 		<h3 style="margin: 33px 0 11px 0;">Водители</h3>
-		<div id="driver-table">
-			<h:dataTable id="driver-table" value="#{driverBean.items}" var="item">
-				<h:column><f:facet name="header">ФИО</f:facet>#{item.fio}</h:column>
-				<h:column><f:facet name="header">Лицензия</f:facet>#{item.license}</h:column>
-				<h:column><h:commandButton value="Редактировать" action="#{driverBean.edit(item)}" /></h:column>
-	            <h:column><h:commandButton class="dangerous-button" value="Удалить" action="#{driverBean.delete(item)}" /></h:column>
-			</h:dataTable>
+		<h:panelGroup rendered="#{employeeDriversBean.edit}">
+            <h4 style="margin: 7px 0;">Редактирование #{employeeDriversBean.item.fio} (#{employeeDriversBean.item.license})</h4>
+            <h:form>
+            	<p>ФИО: <h:inputText value="#{employeeDriversBean.item.fio}" /></p>
+                <p>Лицензия: <h:inputText value="#{employeeDriversBean.item.license}" /></p>
+                <p><h:commandButton value="Сохранить" action="#{employeeDriversBean.save}" /></p>
+            </h:form>
+        </h:panelGroup>
+		<h:panelGroup rendered="#{!employeeDriversBean.edit}">
+            <h4 style="margin: 7px 0;">Добавление</h4>
+            <h:form>
+            	<p>ФИО: <h:inputText value="#{employeeDriversBean.item.fio}" /> | Лицензия: <h:inputText value="#{employeeDriversBean.item.license}" /></p>
+                <p><h:commandButton value="Добавить" action="#{employeeDriversBean.add}" /></p>
+            </h:form>
+        </h:panelGroup>
+		<div style="margin-top: 11px;" id="driver-table">
+			<h:form>
+				<h:dataTable id="driver-table" value="#{employeeDriversBean.items}" var="item">
+					<h:column><f:facet name="header">ФИО</f:facet>#{item.fio}</h:column>
+					<h:column><f:facet name="header">Лицензия</f:facet>#{item.license}</h:column>
+					<h:column><h:commandButton value="Редактировать" action="#{employeeDriversBean.edit(item)}" /></h:column>
+		            <h:column><h:commandButton class="dangerous-button" value="Удалить" action="#{employeeDriversBean.delete(item)}" /></h:column>
+				</h:dataTable>
+			</h:form>
 		</div>
-	</h:form>
+		
+		<hr style="margin: 33px 0;"></hr>
+	    <h3 style="margin: 33px 0 11px 0;">Машины</h3>
+	    <h:panelGroup rendered="#{employeeCarsBean.edit}">
+            <h4 style="margin: 7px 0;">Редактирование</h4>
+            <h:form>
+              <p>Номер: <h:inputText value="#{employeeCarsBean.item.car_num}" /></p>
+              <p>Модель: <h:inputText value="#{employeeCarsBean.item.car_model}" /></p>
+              <p>Мощность: <h:inputText value="#{employeeCarsBean.item.car_power}" /></p>
+              <p>Лицензия: <h:inputText value="#{employeeCarsBean.item.driver_license}" /></p>
+              <p><h:commandButton value="Сохранить" action="#{employeeCarsBean.save}" /></p>
+            </h:form>
+        </h:panelGroup>
+	    <h:panelGroup rendered="#{!employeeCarsBean.edit}">
+            <h4 style="margin: 7px 0;">Добавление</h4>
+            <h:form>
+              <p>Номер: <h:inputText value="#{employeeCarsBean.item.car_num}" /></p>
+              <p>Модель: <h:inputText value="#{employeeCarsBean.item.car_model}" /></p>
+              <p>Мощность: <h:inputText value="#{employeeCarsBean.item.car_power}" /></p>
+              <p>Лицензия: <h:inputText value="#{employeeCarsBean.item.driver_license}" /></p>
+              <p><h:commandButton value="Добавить" action="#{employeeCarsBean.add}" /></p>
+            </h:form>
+        </h:panelGroup>
+	    <div style="margin-top: 11px;" id="cars-table">
+	      <h:form>
+	        <h:dataTable id="cars-table" value="#{employeeCarsBean.items}" var="item">
+	          <h:column><f:facet name="header">Номер</f:facet>#{item.car_num}</h:column>
+	          <h:column><f:facet name="header">Модель</f:facet>#{item.car_model}</h:column>
+	          <h:column><f:facet name="header">Мощность</f:facet>#{item.car_power}</h:column>
+	          <h:column><f:facet name="header">Лицензия</f:facet>#{item.driver_license}</h:column>
+	          <h:column><h:commandButton value="Редактировать" action="#{employeeCarsBean.edit(item)}" /></h:column>
+	          <h:column><h:commandButton class="dangerous-button" value="Удалить" action="#{employeeCarsBean.delete(item)}" /></h:column>
+	        </h:dataTable>
+	      </h:form>
+	    </div>
+	</ui:define>
+	
 </ui:composition>
 
 </html>

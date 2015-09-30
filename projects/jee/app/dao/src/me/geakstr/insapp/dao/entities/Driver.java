@@ -12,9 +12,25 @@ public class Driver implements IEntity {
 	@Column(nullable = false)
 	private String license;
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique = false)
 	private String fio;
 	
+	public String getLicense() {
+		return license;
+	}
+
+	public void setLicense(String license) {
+		this.license = license;
+	}
+
+	public String getFio() {
+		return fio;
+	}
+
+	public void setFio(String fio) {
+		this.fio = fio;
+	}
+
 	@Override
 	public String toString() {
 		return String.format(

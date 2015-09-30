@@ -38,4 +38,9 @@ public class AdminFacade implements ICrudFacade<User> {
 	public void edit(final User user) {
 		userDao.edit(user);
 	}
+	
+	public void block(final User user, final boolean block) {
+		user.setRole(block ? "BLOCKED" : "EMPLOYEE");
+		userDao.edit(user);
+	}
 }

@@ -28,8 +28,6 @@ public class User implements IEntity {
 	public void setFio(String fio) {
 		this.fio = fio;
 	}
-	
-	
 
 	public String getRole() {
 		return role;
