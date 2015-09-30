@@ -3,6 +3,7 @@ package me.geakstr.insapp.business.facades;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import org.jboss.security.auth.spi.Util;
@@ -11,6 +12,7 @@ import me.geakstr.insapp.dao.UserDao;
 import me.geakstr.insapp.dao.entities.User;
 
 @Stateless
+@LocalBean
 public class AdminFacade implements ICrudFacade<User> {
 	@EJB
 	private UserDao userDao;

@@ -15,7 +15,7 @@
 		    <c:when test="${ baseBean.sessionInfo.isAdmin() }">
 		        <a href="/web/views/admin/index.xhtml">Администратор</a> | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form>
 		    </c:when>
-		    <c:when test="${ baseBean.sessionInfo.isEmployee() }">
+		    <c:when test="${ baseBean.sessionInfo.isEmployee() or baseBean.sessionInfo.isBlocked()}">
 		        <a href="/web/views/employee/index.xhtml">Сотрудник</a> | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form>
 		    </c:when>    
 		    <c:otherwise>

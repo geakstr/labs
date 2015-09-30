@@ -2,7 +2,6 @@ package me.geakstr.insapp.web.beans;
 
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -11,20 +10,19 @@ import me.geakstr.insapp.dao.entities.IEntity;
 
 @ManagedBean
 @ViewScoped
-public abstract class CrudBean<T extends IEntity, V extends ICrudFacade<T>> extends BaseBean {
-	@EJB
-	protected V facade;
-	
+public abstract class CrudBean<T extends IEntity, V extends ICrudFacade<T>> extends BaseBean {	
 	protected List<T> items;
 	protected T item;
 	protected boolean edit;
 
 	private Class<T> clazz;
+	
+	protected abstract V getFacade();
 
 	protected void init(final Class<T> clazz) {
 		this.clazz = clazz;
 		
-		items = facade.findAll();
+		items = getFacade().findAll();
 		try {
 			item = clazz.newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
@@ -34,7 +32,7 @@ public abstract class CrudBean<T extends IEntity, V extends ICrudFacade<T>> exte
 	
 	public void add() {
 		items.add(item);
-		facade.add(item);
+		getFacade().add(item);
 		try {
 			item = clazz.newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
@@ -48,7 +46,7 @@ public abstract class CrudBean<T extends IEntity, V extends ICrudFacade<T>> exte
 	}
 
 	public void save() {
-		facade.edit(item);
+		getFacade().edit(item);
 		edit = false;
 		try {
 			item = clazz.newInstance();
@@ -58,7 +56,7 @@ public abstract class CrudBean<T extends IEntity, V extends ICrudFacade<T>> exte
 	}
 
 	public void delete(final T item) {
-		facade.delete(item);
+		getFacade().delete(item);
 		items.remove(item);
 	}
 

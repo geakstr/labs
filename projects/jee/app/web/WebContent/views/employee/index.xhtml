@@ -11,6 +11,19 @@
 	<ui:define name="content">
 		<div class="header-line">Вы вошли как сотрудник | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form></div>
 	</ui:define>
+	
+	<h:form rendered="#{not empty driverBean.items and !driverBean.edit}">
+		<hr style="margin: 33px 0;"></hr>
+		<h3 style="margin: 33px 0 11px 0;">Водители</h3>
+		<div id="driver-table">
+			<h:dataTable id="driver-table" value="#{driverBean.items}" var="item">
+				<h:column><f:facet name="header">ФИО</f:facet>#{item.fio}</h:column>
+				<h:column><f:facet name="header">Лицензия</f:facet>#{item.license}</h:column>
+				<h:column><h:commandButton value="Редактировать" action="#{driverBean.edit(item)}" /></h:column>
+	            <h:column><h:commandButton class="dangerous-button" value="Удалить" action="#{driverBean.delete(item)}" /></h:column>
+			</h:dataTable>
+		</div>
+	</h:form>
 </ui:composition>
 
 </html>

@@ -29,6 +29,7 @@ public class BaseBean {
 		if (context != null) {
 			sessionInfo.isAdmin = context.isUserInRole("ADMIN");
 			sessionInfo.isEmployee = context.isUserInRole("EMPLOYEE");
+			sessionInfo.isBlocked = context.isUserInRole("BLOCKED");
 			
 			if (request.getUserPrincipal() != null) {
 				sessionInfo.name = request.getUserPrincipal().getName();
