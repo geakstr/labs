@@ -14,6 +14,10 @@ import me.geakstr.insapp.dao.entities.Driver;
 public class EmployeeDriverFacade implements ICrudFacade<Driver> {
 	@EJB
 	private DriverDao driverDao;
+	
+	public Driver find(final String license) {
+		return driverDao.find(license);
+	}
 
 	@Override
 	public List<Driver> findAll() {

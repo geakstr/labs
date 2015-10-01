@@ -1,8 +1,14 @@
 package me.geakstr.insapp.dao.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +20,9 @@ public class Driver implements IEntity {
 
 	@Column(nullable = false, unique = false)
 	private String fio;
+	
+	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "driver")
+	private List<Car> cars = new ArrayList<>();
 	
 	public String getLicense() {
 		return license;
@@ -29,6 +38,39 @@ public class Driver implements IEntity {
 
 	public void setFio(String fio) {
 		this.fio = fio;
+	}
+
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((license == null) ? 0 : license.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Driver other = (Driver) obj;
+		if (license == null) {
+			if (other.license != null)
+				return false;
+		} else if (!license.equals(other.license))
+			return false;
+		return true;
 	}
 
 	@Override

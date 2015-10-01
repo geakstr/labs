@@ -15,10 +15,10 @@
 		<hr style="margin: 33px 0;"></hr>
 		<h3 style="margin: 33px 0 11px 0;">Водители</h3>
 		<h:panelGroup rendered="#{employeeDriversBean.edit}">
-            <h4 style="margin: 7px 0;">Редактирование #{employeeDriversBean.item.fio} (#{employeeDriversBean.item.license})</h4>
+            <h4 style="margin: 7px 0;">Редактирование</h4>
             <h:form>
+            	<p>Лицензия: <h:outputLabel value="#{employeeDriversBean.item.license}" /></p>
             	<p>ФИО: <h:inputText value="#{employeeDriversBean.item.fio}" /></p>
-                <p>Лицензия: <h:inputText value="#{employeeDriversBean.item.license}" /></p>
                 <p><h:commandButton value="Сохранить" action="#{employeeDriversBean.save}" /></p>
             </h:form>
         </h:panelGroup>
@@ -45,10 +45,10 @@
 	    <h:panelGroup rendered="#{employeeCarsBean.edit}">
             <h4 style="margin: 7px 0;">Редактирование</h4>
             <h:form>
-              <p>Номер: <h:inputText value="#{employeeCarsBean.item.car_num}" /></p>
+              <p>Номер: <h:outputLabel value="#{employeeCarsBean.item.car_num}" /></p>
+              <p>Лицензия: <h:outputLabel value="#{employeeCarsBean.item.driver.license}" /></p>
               <p>Модель: <h:inputText value="#{employeeCarsBean.item.car_model}" /></p>
               <p>Мощность: <h:inputText value="#{employeeCarsBean.item.car_power}" /></p>
-              <p>Лицензия: <h:inputText value="#{employeeCarsBean.item.driver_license}" /></p>
               <p><h:commandButton value="Сохранить" action="#{employeeCarsBean.save}" /></p>
             </h:form>
         </h:panelGroup>
@@ -58,7 +58,14 @@
               <p>Номер: <h:inputText value="#{employeeCarsBean.item.car_num}" /></p>
               <p>Модель: <h:inputText value="#{employeeCarsBean.item.car_model}" /></p>
               <p>Мощность: <h:inputText value="#{employeeCarsBean.item.car_power}" /></p>
-              <p>Лицензия: <h:inputText value="#{employeeCarsBean.item.driver_license}" /></p>
+              <p>Лицензия:
+              	<h:selectOneMenu value="#{employeeCarsBean.item.driver}" converter="#{driverConverter}">
+              		<f:selectItems value="#{employeeDriversBean.items}"
+              					   var="currentDriver"
+              					   itemValue="#{currentDriver}"
+              					   itemLabel="#{currentDriver.fio} #{currentDriver.license}" />
+              	</h:selectOneMenu>
+              	</p>
               <p><h:commandButton value="Добавить" action="#{employeeCarsBean.add}" /></p>
             </h:form>
         </h:panelGroup>
@@ -68,7 +75,7 @@
 	          <h:column><f:facet name="header">Номер</f:facet>#{item.car_num}</h:column>
 	          <h:column><f:facet name="header">Модель</f:facet>#{item.car_model}</h:column>
 	          <h:column><f:facet name="header">Мощность</f:facet>#{item.car_power}</h:column>
-	          <h:column><f:facet name="header">Лицензия</f:facet>#{item.driver_license}</h:column>
+	          <h:column><f:facet name="header">Лицензия</f:facet>#{item.driver.license}</h:column>
 	          <h:column><h:commandButton value="Редактировать" action="#{employeeCarsBean.edit(item)}" /></h:column>
 	          <h:column><h:commandButton class="dangerous-button" value="Удалить" action="#{employeeCarsBean.delete(item)}" /></h:column>
 	        </h:dataTable>

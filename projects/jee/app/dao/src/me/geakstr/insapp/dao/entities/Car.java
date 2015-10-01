@@ -3,6 +3,8 @@ package me.geakstr.insapp.dao.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,9 +20,10 @@ public class Car implements IEntity {
 	@Column(nullable = false, unique = false)
 	private Integer car_power;
 	
-	@Column(nullable = false, unique = false)
-	private String driver_license;
-
+	@ManyToOne
+	@JoinColumn(name = "driver_license", referencedColumnName = "license")
+	private Driver driver;
+	
 	public String getCar_num() {
 		return car_num;
 	}
@@ -45,12 +48,38 @@ public class Car implements IEntity {
 		this.car_power = car_power;
 	}
 
-	public String getDriver_license() {
-		return driver_license;
+	public Driver getDriver() {
+		return driver;
 	}
 
-	public void setDriver_license(String driver_license) {
-		this.driver_license = driver_license;
+	public void setDriver(Driver driver) {
+		this.driver = driver;
+		driver.getCars().add(this);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((car_num == null) ? 0 : car_num.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Car other = (Car) obj;
+		if (car_num == null) {
+			if (other.car_num != null)
+				return false;
+		} else if (!car_num.equals(other.car_num))
+			return false;
+		return true;
 	}
 
 	@Override
@@ -60,6 +89,6 @@ public class Car implements IEntity {
 				car_num,
 				car_model,
 				car_power,
-				driver_license);
+				driver.getLicense());
 	}
 }
