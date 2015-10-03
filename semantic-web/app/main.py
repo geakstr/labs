@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.debug = True
 
 g = rdflib.Graph()
-g.load('./rdf.xml')
+g.load('./static/rdf.xml')
 
 RDF = rdflib.namespace.RDF
 APPS = rdflib.Namespace('http://local-appstore/rdf#')
