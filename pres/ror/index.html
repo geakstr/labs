@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <title>Кэширование в вебе</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=792, user-scalable=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="../shower/themes/ribbon/styles/screen.css">
+</head>
+
+<style>
+body {
+  font-family: Consolas, Ubuntu Mono, Monaco, Menlo, monospace;
+}
+img.my-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+h2 {
+  color: red!important;
+  font-weight: 400!important;
+  text-align: center;
+}
+</style>
+<body class="list">
+  <header class="caption">
+    <h1>Кэширование в вебе</h1>
+  </header>
+  <section class="slide cover" id="Cover">
+    <div>      
+      <h2>Ruby on Rails</h2>
+      <img src="pictures/ruby-on-rails.png" height="300" width="380">
+      <p>Дмитрий Харитонов</p>
+      <style>
+        #Cover {
+          background: #fff;
+        }
+        #Cover h2, #Cover p {
+          width: 100%;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          text-align: center;
+          margin-top: -170px;
+          font-weight: 400;
+          color: #333;
+        }
+        #Cover p {
+          bottom: 0;
+          margin-top: 120px;
+          font-size: 14px;
+        }
+        #Cover img {
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin: -150px 0 0 -190px;
+        }
+      </style>
+    </div>
+  </section>
+  </section>
+  <section class="slide" id="Matz">
+    <div>      
+      <img src="pictures/matz.jpg" style="height: 200px;">
+      <div>
+        <h2>Юкихиро Мацумото</h2>      
+        <p>Исследователь языков программирования и компиляторов, математик.</p>
+        <p>Выпустил первую версию Ruby в 1995 году.</p>
+      </div>
+      <style>
+        #Matz div div {
+          position: absolute;
+          top: 50%;
+          margin-top: -70px;
+          margin-left: 240px;
+          font-size: 16px;
+        }
+        #Matz h2 {
+          text-align: left;
+          color: red;
+          font-size: 18px;
+        }
+        #Matz p {
+          margin-bottom: 22px;
+        }
+        #Matz img {
+          position: absolute;
+          top: 50%;
+          margin-top: -100px;
+        }
+      </style>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>Ruby</h2>
+      <p>Динамический, интерпретируемый объектно-ориентированный язык программирования</p>
+<pre style="font-size: 22px;">
+<code>str = "Hello, World!"</code>
+<code>def str.hello_world</code>
+<code>  puts str</code>
+<code>end</code>
+<code>str.hello_world</code>
+</pre>
+    </div>
+  </section>
+  <div class="progress">
+    <div></div>
+  </div>
+
+  <script src="../shower/shower.min.js"></script>
+</body>
+
+</html>
