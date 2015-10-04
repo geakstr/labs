@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <title>Кэширование в вебе</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=792, user-scalable=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="../shower/themes/ribbon/styles/screen.css">
+</head>
+
+<style>
+img.my-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+<body class="list">
+  <header class="caption">
+    <h1>Кэширование в вебе</h1>
+  </header>
+  <section class="slide cover" id="Cover">
+    <div>      
+      <h2>Кэширование в вебе</h2>
+      <p>Дмитрий Харитонов</p>      
+      <!--<img class="my-full" src="pictures/napoleon-ingrs-pixels.jpg" alt="">-->
+      <style>
+		#Cover {
+			background: #FFF;
+		}
+        #Cover h2 {
+          margin-top: 2em;
+          width: 100%;
+          text-align: center;
+          color: #333;
+          font-size: 70px;
+        }
+        
+        #Cover p {
+          width: 100%;
+          text-align: center;
+          color: #333;
+          font-size: 20px;
+        }
+        
+        #Cover p a {
+          color: #FFF;
+        }
+      </style>
+    </div>
+  </section>
+  <!--<section class="slide cover">
+    <div>
+      <img class="my-full" src="pictures/napoleon-ingrs.jpg"  alt="">
+    </div>
+  </section>
+  <section class="slide cover">
+    <div>
+      <img class="my-full" src="pictures/napoleon-complete.jpg"  alt="">
+    </div>
+  </section>-->
+  <section class="slide">
+    <div>
+      <h2>Что такое веб-кэш</h2>
+      <figure>
+        <blockquote>
+          <p>Веб-кэш располагается между сервером и клиентом. Он следит за входящими запросами, сохраняя при этом копии ответов — HTML-страниц, изображений и файлов. Затем, если поступает другой запрос с аналогичным url-адресом, кэш может использовать сохраненный прежде ответ, вместо повторного запроса к серверу.</p>
+        </blockquote>
+        <figcaption>Марк Ноттингем</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>Зачем нужен кэш</h2>
+      <br>
+      <ol>
+        <li class="next">Уменьшение времени ожидания пользователем</li>
+        <li class="next">Снижение сетевого трафика и экономия ресурсов серверов</li>
+      </ol>
+      <p class="next"><strong>Для снижения нагрузки на сервер и улучшения пользовательского опыта</strong></p>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>Методики замещения</h2>
+      <ol style="margin-top: 4em;">
+        <li class="next" style="margin-bottom: 2em;">LRU (Least Recently Used)</li>
+        <li class="next" style="margin-bottom: 2em;">LFU (Least Frequently Used)</li>
+      </ol>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>SACS — Semantics Aware Caching System</h2>
+      <br>
+      <p>Система кэширования, новаторской идеей которой является знание и учет информации о «расстоянии» между страницами. Алгоритм пытается определить, какую следующую страницу просмотрит пользователь и не вытесняет её из кэша.</p>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>Используемые метрики</h2>
+      <ol>
+        <li class="next"><strong>Recency</strong> (новизна) — отвечает за время последнего доступа к объекту в кэше</li>
+        <li class="next"><strong>Frequency</strong> (частота) — говорит сколько раз объект запрашивался в кэше</li>
+        <li class="next"><strong>Distance</strong> (расстояние) — метрика, которую вводят авторы; обозначает минимальное количество переходов между двумя страницами</li>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>Pivots — Опорные страницы</h2>
+      <ul>
+        <li class="next" style="margin-bottom: 1em;">Опорными являются недавно запрашиваемые страницы</li>
+        <li class="next" style="margin-bottom: 1em;">Параметр «недавно» устанавливается вручную</li>
+        <li class="next">Расстояние до страниц, напрямую связанных с опорными, равна 1</li>
+      </ul>  
+      <p class="next">На основе опорных страниц рассчитывается метрика «distance»</p>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>1 этап работы: отслеживание</h2>
+      <ol>
+        <li class="next">Проверка на наличие объекта в кэше
+          <ul>
+            <li class="next">Если он присутствует, ему обновляется время доступа и увеличивается на единицу количество обращений</li>
+          </ul>
+        </li>
+        <li class="next">В противном случае результат формируется как обычно и добавляется в кэш
+          <ul>
+            <li class="next">Если сформированный объект в него не помещается — выполняется второй этап</li>
+          </ul>
+        </li>
+        <li class="next">Пользователю отправляется ответ</li>
+      </ol>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>2 этап работы: вытеснение</h2>
+      <ol>
+        <li class="next">Для текущей страницы в фоне запускается алгоритм поиска в ширину для определения расстояния между этой и ближайшей опорной страницей</li>
+        <li class="next">Случайным образом отбирается набор страниц-кандидатов на удаление</li>
+        <li class="next">Набор сортируется по убыванию расстояний</li>
+        <li class="next">Пока не освободится достаточно места — удаляем объекты из кэша</li>
+        <li class="next">Добавляем объект в кэш</li>
+      </ol>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>Реализация</h2>
+      <ol>
+        <li>Java</li>
+        <li>Ehcache</li>
+        <li>Netty</li>
+        <li>htmlparser</li>
+      </ol>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>Тестирование</h2>
+      <p>Был взят слепок логов чемпионата мира FIFA в 1998 году, который содержит около 1.35 миллиардов записей за период в 3 месяца</p>
+      <p>Записи содержат UID пользователя, время доступа и адрес страницы</p>
+      <p>Также из веб-архива интернета были выкачаны сами страницы, упомянутые в логах</p>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>Количество попаданий в кэше</h2>
+      <img src="pictures/hitrate.png" style="margin-top: 22px; width: 100%;" alt="">
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>Объем занимаемой памяти</h2>
+      <img src="pictures/memory.png" style="margin-top: 22px; width: auto; margin: 0 auto;" alt="">
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>Количество запросов в секунду</h2>
+      <img src="pictures/perf.png" style="margin-top: 22px; width: 100%;" alt="">
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>Другие решения</h2>
+      <ol>
+        <li>Эвристики над LFU и LRU</li>
+        <li>Комбинация LFU и LRU</li>
+        <li>Функциональные методики</li>
+        <li>Рандомизированные алгоритмы</li>
+        <li>Машинное обучение</li>
+      </ol>
+    </div>
+  </section>
+  <div class="progress">
+    <div></div>
+  </div>
+
+  <script src="../shower/shower.min.js"></script>
+</body>
+
+</html>
