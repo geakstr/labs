@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Кэширование в вебе</title>
+  <title>Ruby on Rails</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=792, user-scalable=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -24,16 +24,17 @@ h2 {
   color: red!important;
   font-weight: 400!important;
   text-align: center;
+  font-size: 28px!important;
 }
 </style>
 <body class="list">
   <header class="caption">
-    <h1>Кэширование в вебе</h1>
+    <h1>Ruby on Rails</h1>
   </header>
   <section class="slide cover" id="Cover">
     <div>      
       <h2>Ruby on Rails</h2>
-      <img src="pictures/ruby-on-rails.png" height="300" width="380">
+      <img src="pictures/ruby.png" height="300" width="380">
       <p>Дмитрий Харитонов</p>
       <style>
         #Cover {
@@ -100,7 +101,7 @@ h2 {
   <section class="slide">
     <div>
       <h2>Ruby</h2>
-      <p>Динамический, интерпретируемый объектно-ориентированный язык программирования</p>
+      <p>Динамический, интерпретируемый объектно-ориентированный язык программирования</p>
 <pre style="font-size: 22px;">
 <code>str = "Hello, World!"</code>
 <code>def str.hello_world</code>
@@ -110,6 +111,74 @@ h2 {
 </pre>
     </div>
   </section>
+  <section class="slide">
+    <div>
+      <h2>Ruby on Rails</h2>
+      <p>MVC веб-фреймворк с открытым исходным кодом, написанный на Ruby. Выпущен в 2004 году, как побочный продукт компании 37signals.</p>
+      <img src="pictures/ror.png" style="display: block; width: 150px; margin: 0 auto;">
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>Кто использует</h2>
+      <ul>
+        <li>Basecamp</li>
+        <li>Twitter (уже нет)</li>
+        <li>GitHub</li>
+        <li>Airbnb</li>
+        <li>Groupon</li>
+        <li>Kickstarter</li>
+        <li>...</li>
+      </ul>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>Концепции и инструменты</h2>
+      <ul>
+        <li>Don’t repeat yourself (DRY)</li>
+        <li>Coding by convension (CoC)</li>
+        <li>Fat models, skinny controllers</li>
+        <li>TDD (Test Driven Development)</li>
+        <li>Active Record</li>
+        <li>Инструменты командной строки (CLI Tools)</li>
+      </ul>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>CLI Tools</h2>
+<pre>
+<code>gem install rails</code>
+<code>rails new blog && cd ./blog</code>
+<code>rails server</code>
+<code>...</code>
+<code>rails generate controller welcome index</code>
+<code>rails generate model Article title:string text:text</code>
+</pre>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>Active Record</h2>
+<pre style="font-size: 16px; line-height: 22px;">
+<code>class ArticlesController < ApplicationController</code>
+<code>  def index</code>
+<code>    @articles = Article.all</code>
+<code>  end</code>
+<code>  def show</code>
+<code>    @article = Article.find(params[:id])</code>
+<code>  end</code>
+<code>  def create</code>
+<code>    @article = Article.new(article_params)</code>
+<code>    @article.save</code>
+<code>    redirect_to @article</code>
+<code>  end</code>
+<code>end</code>
+</pre>
+    </div>
+  </section>
+  
   <div class="progress">
     <div></div>
   </div>
