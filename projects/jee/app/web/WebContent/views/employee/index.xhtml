@@ -81,6 +81,93 @@
 	        </h:dataTable>
 	      </h:form>
 	    </div>
+	    
+	    <hr style="margin: 33px 0;"></hr>
+	    <h3 style="margin: 33px 0 11px 0;">Страховки</h3>
+	    <h:panelGroup rendered="#{employeeInsuranceBean.edit}">
+            <h4 style="margin: 7px 0;">Редактирование</h4>
+            <h:form>
+              <p>Номер:
+              	<h:selectOneMenu value="#{employeeInsuranceBean.item.car}" converter="#{carConverter}">
+              		<f:selectItems value="#{employeeCarsBean.items}"
+              					   var="currentCar"
+              					   itemValue="#{currentCar}"
+              					   itemLabel="#{currentCar.car_num}" />
+              	</h:selectOneMenu>
+              </p>
+              <p>Лицензия:
+              	<h:selectManyListbox value="#{employeeInsuranceBean.drivers}" converter="#{driverConverter}">
+              		<f:selectItems value="#{employeeDriversBean.items}"
+              					   var="currentDriver"
+              					   itemValue="#{currentDriver}"
+              					   itemLabel="#{currentDriver.license}" />
+              	</h:selectManyListbox>
+              </p>
+              <p>Начало: <h:message for="insuranceDateFrom" style="color: red;" /> 
+	              <h:inputText id="insuranceDateFrom" value="#{employeeInsuranceBean.item.date_from}" required="true" requiredMessage="Введите дату начала">  
+	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
+	              </h:inputText>
+              </p>
+              <p>Конец: <h:message for="insuranceDateTo" style="color: red;" /> 
+	              <h:inputText id="insuranceDateTo" value="#{employeeInsuranceBean.item.date_to}" required="true" requiredMessage="Введите дату оконцания">  
+	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
+	              </h:inputText>
+              </p>
+              <p>Стоимость:
+              	<h:inputText value="#{employeeInsuranceBean.item.cost}" />
+              </p>
+              <p><h:commandButton value="Сохранить" action="#{employeeInsuranceBean.save}" /></p>
+            </h:form>
+        </h:panelGroup>
+	    <h:panelGroup rendered="#{!employeeInsuranceBean.edit}">
+            <h4 style="margin: 7px 0;">Добавление</h4>
+            <h:form>
+              <p>Номер:
+              	<h:selectOneMenu value="#{employeeInsuranceBean.item.car}" converter="#{carConverter}">
+              		<f:selectItems value="#{employeeCarsBean.items}"
+              					   var="currentCar"
+              					   itemValue="#{currentCar}"
+              					   itemLabel="#{currentCar.car_num}" />
+              	</h:selectOneMenu>
+              </p>
+              <p>Лицензия:
+              	<h:selectManyListbox value="#{employeeInsuranceBean.drivers}" converter="#{driverConverter}">
+              		<f:selectItems value="#{employeeDriversBean.items}"
+              					   var="currentDriver"
+              					   itemValue="#{currentDriver}"
+              					   itemLabel="#{currentDriver.license}" />
+              	</h:selectManyListbox>
+              </p>
+              <p>Начало: <h:message for="insuranceDateFrom" style="color: red;" /> 
+	              <h:inputText id="insuranceDateFrom" value="#{employeeInsuranceBean.item.date_from}" required="true" requiredMessage="Введите дату начала">  
+	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
+	              </h:inputText>
+              </p>
+              <p>Конец: <h:message for="insuranceDateTo" style="color: red;" /> 
+	              <h:inputText id="insuranceDateTo" value="#{employeeInsuranceBean.item.date_to}" required="true" requiredMessage="Введите дату оконцания">  
+	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
+	              </h:inputText>
+              </p>
+              <p>Стоимость:
+              	<h:inputText value="#{employeeInsuranceBean.item.cost}" />
+              </p>
+              <p><h:commandButton value="Добавить" action="#{employeeInsuranceBean.add}" /></p>
+            </h:form>
+        </h:panelGroup>
+	    <div style="margin-top: 11px;" id="insurances-table">
+	      <h:form>
+	        <h:dataTable id="insurances-table" value="#{employeeInsuranceBean.items}" var="item">
+	          <h:column><f:facet name="header">ID</f:facet>#{item.id}</h:column>
+	          <h:column><f:facet name="header">Номер</f:facet>#{item.car.car_num}</h:column>
+	          <h:column><f:facet name="header">Начало</f:facet>#{item.date_from}</h:column>
+	          <h:column><f:facet name="header">Конец</f:facet>#{item.date_to}</h:column>
+	          <h:column><f:facet name="header">Статус</f:facet>#{item.active}</h:column>
+	          <h:column><f:facet name="header">Стоимость</f:facet>#{item.cost}</h:column>
+	          <h:column><h:commandButton value="Редактировать" action="#{employeeInsuranceBean.edit(item)}" /></h:column>
+	          <h:column><h:commandButton class="dangerous-button" value="Удалить" action="#{employeeInsuranceBean.delete(item)}" /></h:column>
+	        </h:dataTable>
+	      </h:form>
+	    </div>
 	</ui:define>
 	
 </ui:composition>

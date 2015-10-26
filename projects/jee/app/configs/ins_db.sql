@@ -31,9 +31,9 @@ create table insurances (
 );
 
 create table insurance_to_driver (
+  id int auto_increment not null primary key,
   insurance_id int not null,
   driver_license char(10) not null,
-  primary key (insurance_id, driver_license),
   foreign key (insurance_id) references insurances(id),
   foreign key (driver_license) references drivers(license),
 );

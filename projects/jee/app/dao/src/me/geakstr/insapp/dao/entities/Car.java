@@ -1,10 +1,15 @@
 package me.geakstr.insapp.dao.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +28,9 @@ public class Car implements IEntity {
 	@ManyToOne
 	@JoinColumn(name = "driver_license", referencedColumnName = "license")
 	private Driver driver;
+	
+	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "car")
+	private List<Insurance> insurances;
 	
 	public String getCar_num() {
 		return car_num;
@@ -55,6 +63,14 @@ public class Car implements IEntity {
 	public void setDriver(Driver driver) {
 		this.driver = driver;
 		driver.getCars().add(this);
+	}
+
+	public List<Insurance> getInsurances() {
+		return insurances;
+	}
+
+	public void setInsurances(List<Insurance> insurances) {
+		this.insurances = insurances;
 	}
 
 	@Override

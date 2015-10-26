@@ -14,6 +14,10 @@ import me.geakstr.insapp.dao.entities.Car;
 public class EmployeeCarFacade implements ICrudFacade<Car> {
 	@EJB
 	private CarDao carDao;
+	
+	public Car find(final String car_num) {
+		return carDao.find(car_num);
+	}
 
 	@Override
 	public List<Car> findAll() {

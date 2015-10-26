@@ -24,6 +24,9 @@ public class Driver implements IEntity {
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "driver")
 	private List<Car> cars = new ArrayList<>();
 	
+	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "driver")
+	private List<InsuranceToDriver> insuranceToDrivers = new ArrayList<>();
+	
 	public String getLicense() {
 		return license;
 	}
@@ -46,6 +49,19 @@ public class Driver implements IEntity {
 
 	public void setCars(List<Car> cars) {
 		this.cars = cars;
+	}
+
+	public List<InsuranceToDriver> getInsuranceToDrivers() {
+		return insuranceToDrivers;
+	}
+
+	public void setInsuranceToDrivers(List<InsuranceToDriver> insuranceToDrivers) {
+		this.insuranceToDrivers = insuranceToDrivers;
+	}
+	
+	public void addInsuranceToDriver(InsuranceToDriver insuranceToDriver) {
+		this.insuranceToDrivers.add(insuranceToDriver);
+		insuranceToDriver.setDriver(this);
 	}
 
 	@Override
