@@ -45,4 +45,13 @@ public class InsuranceToDriver implements IEntity {
 	public void setDriver(Driver driver) {
 		this.driver = driver;
 	}
+	
+	@Override
+	public String toString() {
+		return String.format(
+				"InsuranceToDriver : \n id = %s \n %s; \n %s",
+				id,
+				insurance.toString(),
+				driver.toString());
+	}
 }

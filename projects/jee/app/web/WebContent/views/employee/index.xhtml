@@ -12,20 +12,28 @@
 		<div class="header-line">Вы вошли как сотрудник | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form></div>
 	
 
+import javax.faces.bean.ManagedProperty;
 		<hr style="margin: 33px 0;"></hr>
 		<h3 style="margin: 33px 0 11px 0;">Водители</h3>
 		<h:panelGroup rendered="#{employeeDriversBean.edit}">
             <h4 style="margin: 7px 0;">Редактирование</h4>
             <h:form>
-            	<p>Лицензия: <h:outputLabel value="#{employeeDriversBean.item.license}" /></p>
-            	<p>ФИО: <h:inputText value="#{employeeDriversBean.item.fio}" /></p>
+            	<p>Лицензия: <span class="wrap"><h:outputLabel value="#{employeeDriversBean.item.license}" /></span></p>
+            	<p>ФИО:
+            		<h:message for="driverFio" class="message" style="color: red;" />
+            		<h:inputText id="driverFio" required="true" requiredMessage="Введите ФИО" value="#{employeeDriversBean.item.fio}" /></p>
                 <p><h:commandButton value="Сохранить" action="#{employeeDriversBean.save}" /></p>
             </h:form>
         </h:panelGroup>
 		<h:panelGroup rendered="#{!employeeDriversBean.edit}">
             <h4 style="margin: 7px 0;">Добавление</h4>
             <h:form>
-            	<p>ФИО: <h:inputText value="#{employeeDriversBean.item.fio}" /> | Лицензия: <h:inputText value="#{employeeDriversBean.item.license}" /></p>
+            	<p>Лицензия:
+            		<h:message for="driverLicense" class="message" style="color: red;" />
+            		<h:inputText id="driverLicense" required="true" requiredMessage="Введите лицензию" value="#{employeeDriversBean.item.license}" /></p>
+            	<p>ФИО:
+            		<h:message for="driverFio" class="message" style="color: red;" />
+            		<h:inputText id="driverFio" required="true" requiredMessage="Введите ФИО" value="#{employeeDriversBean.item.fio}" /></p>
                 <p><h:commandButton value="Добавить" action="#{employeeDriversBean.add}" /></p>
             </h:form>
         </h:panelGroup>
@@ -45,8 +53,15 @@
 	    <h:panelGroup rendered="#{employeeCarsBean.edit}">
             <h4 style="margin: 7px 0;">Редактирование</h4>
             <h:form>
-              <p>Номер: <h:outputLabel value="#{employeeCarsBean.item.car_num}" /></p>
-              <p>Лицензия: <h:outputLabel value="#{employeeCarsBean.item.driver.license}" /></p>
+              <p>Номер: <span class="wrap"><h:outputLabel value="#{employeeCarsBean.item.car_num}" /></span></p>
+              <p>Лицензия: 
+              	<h:selectOneMenu value="#{employeeCarsBean.item.driver}" converter="#{driverConverter}">
+              		<f:selectItems value="#{employeeDriversBean.items}"
+              					   var="currentDriver"
+              					   itemValue="#{currentDriver}"
+              					   itemLabel="#{currentDriver.license}" />
+              	</h:selectOneMenu>
+              </p>
               <p>Модель: <h:inputText value="#{employeeCarsBean.item.car_model}" /></p>
               <p>Мощность: <h:inputText value="#{employeeCarsBean.item.car_power}" /></p>
               <p><h:commandButton value="Сохранить" action="#{employeeCarsBean.save}" /></p>
@@ -55,9 +70,9 @@
 	    <h:panelGroup rendered="#{!employeeCarsBean.edit}">
             <h4 style="margin: 7px 0;">Добавление</h4>
             <h:form>
-              <p>Номер: <h:inputText value="#{employeeCarsBean.item.car_num}" /></p>
-              <p>Модель: <h:inputText value="#{employeeCarsBean.item.car_model}" /></p>
-              <p>Мощность: <h:inputText value="#{employeeCarsBean.item.car_power}" /></p>
+              <p>Номер:
+              	<h:message for="carNum" class="message" style="color: red;" />
+              	<h:inputText id="carNum" required="true" requiredMessage="Введите номер" value="#{employeeCarsBean.item.car_num}" /></p>
               <p>Лицензия:
               	<h:selectOneMenu value="#{employeeCarsBean.item.driver}" converter="#{driverConverter}">
               		<f:selectItems value="#{employeeDriversBean.items}"
@@ -66,6 +81,12 @@
               					   itemLabel="#{currentDriver.fio} #{currentDriver.license}" />
               	</h:selectOneMenu>
               	</p>
+              <p>Модель:
+              	<h:message for="carModel" class="message" style="color: red;" />
+              	<h:inputText id="carModel" required="true" requiredMessage="Введите модель" value="#{employeeCarsBean.item.car_model}" /></p>
+              <p>Мощность:
+                <h:message for="carPower" class="message" style="color: red;" />
+              	<h:inputText id="carPower" required="true" requiredMessage="Введите мощность" value="#{employeeCarsBean.item.car_power}" /></p>
               <p><h:commandButton value="Добавить" action="#{employeeCarsBean.add}" /></p>
             </h:form>
         </h:panelGroup>
@@ -95,27 +116,37 @@
               					   itemLabel="#{currentCar.car_num}" />
               	</h:selectOneMenu>
               </p>
-              <p>Лицензия:
-              	<h:selectManyListbox value="#{employeeInsuranceBean.drivers}" converter="#{driverConverter}">
+              <p class="multiple-license">Лицензия:
+                <h:message for="insuranceLicense" class="message" style="color: red;" />
+              	<h:selectManyListbox id="insuranceLicense" required="true" requiredMessage="Выберите лицензию" value="#{employeeInsuranceBean.drivers}" converter="#{driverConverter}">
               		<f:selectItems value="#{employeeDriversBean.items}"
               					   var="currentDriver"
               					   itemValue="#{currentDriver}"
               					   itemLabel="#{currentDriver.license}" />
               	</h:selectManyListbox>
               </p>
-              <p>Начало: <h:message for="insuranceDateFrom" style="color: red;" /> 
+              <p>Начало:
+              	  <h:message for="insuranceDateFrom" class="message" style="color: red;" /> 
 	              <h:inputText id="insuranceDateFrom" value="#{employeeInsuranceBean.item.date_from}" required="true" requiredMessage="Введите дату начала">  
 	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
 	              </h:inputText>
               </p>
-              <p>Конец: <h:message for="insuranceDateTo" style="color: red;" /> 
-	              <h:inputText id="insuranceDateTo" value="#{employeeInsuranceBean.item.date_to}" required="true" requiredMessage="Введите дату оконцания">  
+              <p>Конец:
+              	  <h:message for="insuranceDateTo" class="message" style="color: red;" />
+	              <h:inputText id="insuranceDateTo" value="#{employeeInsuranceBean.item.date_to}" required="true" requiredMessage="Введите дату окончания">  
 	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
 	              </h:inputText>
               </p>
               <p>Стоимость:
-              	<h:inputText value="#{employeeInsuranceBean.item.cost}" />
+                <h:message for="insuranceCost" class="message" style="color: red;" />
+              	<h:inputText id="insuranceCost" required="true" requiredMessage="Введите стоимость" value="#{employeeInsuranceBean.item.cost}" />
               </p>
+              <p>Статус:
+                <h:selectOneRadio value="#{employeeInsuranceBean.item.active}" class="status">
+				   <f:selectItem itemValue="#{true}" itemLabel="✓" />
+				   <f:selectItem itemValue="#{false}" itemLabel="✗" />	   			
+				</h:selectOneRadio>
+			  </p>
               <p><h:commandButton value="Сохранить" action="#{employeeInsuranceBean.save}" /></p>
             </h:form>
         </h:panelGroup>
@@ -130,26 +161,30 @@
               					   itemLabel="#{currentCar.car_num}" />
               	</h:selectOneMenu>
               </p>
-              <p>Лицензия:
-              	<h:selectManyListbox value="#{employeeInsuranceBean.drivers}" converter="#{driverConverter}">
+              <p class="multiple-license">Лицензия:
+                <h:message for="insuranceLicense" class="message" style="color: red;" />
+              	<h:selectManyListbox id="insuranceLicense" required="true" requiredMessage="Выберите лицензию" value="#{employeeInsuranceBean.drivers}" converter="#{driverConverter}">
               		<f:selectItems value="#{employeeDriversBean.items}"
               					   var="currentDriver"
               					   itemValue="#{currentDriver}"
               					   itemLabel="#{currentDriver.license}" />
               	</h:selectManyListbox>
               </p>
-              <p>Начало: <h:message for="insuranceDateFrom" style="color: red;" /> 
+              <p>Начало:
+              	  <h:message for="insuranceDateFrom" class="message" style="color: red;" />
 	              <h:inputText id="insuranceDateFrom" value="#{employeeInsuranceBean.item.date_from}" required="true" requiredMessage="Введите дату начала">  
 	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
 	              </h:inputText>
               </p>
-              <p>Конец: <h:message for="insuranceDateTo" style="color: red;" /> 
-	              <h:inputText id="insuranceDateTo" value="#{employeeInsuranceBean.item.date_to}" required="true" requiredMessage="Введите дату оконцания">  
+              <p>Конец:
+              	  <h:message for="insuranceDateTo" class="message" style="color: red;" />
+	              <h:inputText id="insuranceDateTo" value="#{employeeInsuranceBean.item.date_to}" required="true" requiredMessage="Введите дату окончания">  
 	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
 	              </h:inputText>
               </p>
               <p>Стоимость:
-              	<h:inputText value="#{employeeInsuranceBean.item.cost}" />
+                <h:message for="insuranceCost" class="message" style="color: red;" />
+              	<h:inputText id="insuranceCost" required="true" requiredMessage="Введите стоимость" value="#{employeeInsuranceBean.item.cost}" />
               </p>
               <p><h:commandButton value="Добавить" action="#{employeeInsuranceBean.add}" /></p>
             </h:form>
@@ -159,10 +194,23 @@
 	        <h:dataTable id="insurances-table" value="#{employeeInsuranceBean.items}" var="item">
 	          <h:column><f:facet name="header">ID</f:facet>#{item.id}</h:column>
 	          <h:column><f:facet name="header">Номер</f:facet>#{item.car.car_num}</h:column>
-	          <h:column><f:facet name="header">Начало</f:facet>#{item.date_from}</h:column>
-	          <h:column><f:facet name="header">Конец</f:facet>#{item.date_to}</h:column>
-	          <h:column><f:facet name="header">Статус</f:facet>#{item.active}</h:column>
+	          <h:column>
+	          	<f:facet name="header">Начало</f:facet>
+	          	<h:outputText value="#{item.date_from}">  
+	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
+	            </h:outputText>
+	          </h:column>
+	          <h:column>
+	          	<f:facet name="header">Конец</f:facet>
+	          	<h:outputText value="#{item.date_to}">  
+	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
+	            </h:outputText>
+	          </h:column>
 	          <h:column><f:facet name="header">Стоимость</f:facet>#{item.cost}</h:column>
+	          <h:column>
+	          	<h:outputText rendered="${item.active}" value="✓" />
+	          	<h:outputText rendered="${!item.active}" value="✗" />
+	          </h:column>
 	          <h:column><h:commandButton value="Редактировать" action="#{employeeInsuranceBean.edit(item)}" /></h:column>
 	          <h:column><h:commandButton class="dangerous-button" value="Удалить" action="#{employeeInsuranceBean.delete(item)}" /></h:column>
 	        </h:dataTable>

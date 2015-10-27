@@ -38,7 +38,7 @@ public class Insurance implements IEntity {
 	@Column(nullable = false, unique = false)
 	private Double cost;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "insurance")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "insurance")
 	private List<InsuranceToDriver> insuranceToDrivers = new ArrayList<>();
 
 	public Integer getId() {
@@ -127,5 +127,13 @@ public class Insurance implements IEntity {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format(
+				"Insurance : id = %s; car_num = %s",
+				id,
+				car.getCar_num());
 	}
 }

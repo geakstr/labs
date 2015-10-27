@@ -1,5 +1,6 @@
 package me.geakstr.insapp.web.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -33,13 +34,23 @@ public class EmployeeInsuranceBean extends CrudBean<Insurance, EmployeeInsurance
 	public void edit(final Insurance insurance) {
 		super.edit(insurance);
 		
-		final List<Driver> drivers = facade.findDrivers(item);
-		setDrivers(drivers);
+		setDrivers(facade.findDrivers(item));
+	}
+	
+	@Override
+	public void save() {
+		facade.save(item, drivers);
+		
+		drivers = new ArrayList<>();
 	}
 	
 	@Override
 	public void add() {
+		items.add(item);
 		facade.add(item, drivers);
+		
+		drivers = new ArrayList<>();
+		item = new Insurance();
 	}
 
 	public List<Driver> getDrivers() {

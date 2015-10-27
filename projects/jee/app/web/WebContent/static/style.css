@@ -22,6 +22,7 @@ a:hover {
 
 form {
 	display: inline;
+	position: relative;
 }
 
 form.block {
@@ -31,6 +32,55 @@ form.block {
 
 form.block span {
 	display: inline-block;
+}
+
+form p {
+	position: relative;
+	margin-bottom: 11px;
+}
+
+form p:last-child {
+	margin-bottom: 0;
+}
+
+form p input,
+form p select,
+form p span.wrap {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 150px;
+	width: 300px;
+}
+
+form p input[type=submit] {
+	position: static;
+	width: 100px;
+}
+
+form p input[type=radio] {
+	position: static;
+}
+
+form table.status {
+	float: left;
+	margin-left: 150px;
+	width: 130px!important;
+	margin-top: -33px;
+}
+
+form p .message {
+	position: absolute;
+	top: 0;
+	left: 472px;
+}
+
+.multiple-license {
+	height: 66px;
+}
+
+.multiple-license select {
+	height: 66px;
 }
 
 h1 {

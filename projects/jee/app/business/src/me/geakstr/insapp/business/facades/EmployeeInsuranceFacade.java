@@ -42,6 +42,33 @@ public class EmployeeInsuranceFacade implements ICrudFacade<Insurance> {
 		insuranceDao.edit(insurance);
 	}
 	
+	public void save(final Insurance insurance, final List<Driver> drivers) {
+		final List<Driver> currentDrivers = insuranceDao.findDrivers(insurance);
+		
+		for (final Driver currentDriver : currentDrivers) {
+			if (!drivers.contains(currentDriver)) {
+				final InsuranceToDriver itd = insuranceToDriverDao.find(insurance, currentDriver);
+				
+				if (itd != null) {
+					System.out.println(itd);
+					
+					insuranceToDriverDao.remove(itd);
+				}
+			}
+		}
+		
+		for (final Driver driver : drivers) {
+			if (!currentDrivers.contains(driver)) {
+				final InsuranceToDriver itd = new InsuranceToDriver();
+				
+				driver.addInsuranceToDriver(itd);
+				insurance.addInsuranceToDriver(itd);
+				
+				insuranceToDriverDao.create(itd);
+			}
+		}
+	}
+	
 	public void add(final Insurance insurance, final List<Driver> drivers) {
 		insurance.setActive(true);
 		
