@@ -42,6 +42,9 @@ public class EmployeeInsuranceBean extends CrudBean<Insurance, EmployeeInsurance
 		facade.save(item, drivers);
 		
 		drivers = new ArrayList<>();
+		items = getFacade().findAll();
+		
+		super.reload();
 	}
 	
 	@Override

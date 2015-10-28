@@ -1,9 +1,13 @@
 package me.geakstr.insapp.web.beans;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import me.geakstr.insapp.business.facades.ICrudFacade;
 import me.geakstr.insapp.dao.entities.IEntity;
@@ -53,11 +57,24 @@ public abstract class CrudBean<T extends IEntity, V extends ICrudFacade<T>> exte
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
+		
+		reload();
+	}
+	
+	public void reload() {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+	    try {
+			ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void delete(final T item) {
 		getFacade().delete(item);
 		items.remove(item);
+		
+		reload();
 	}
 
 	public List<T> getItems() {

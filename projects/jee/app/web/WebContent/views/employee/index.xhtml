@@ -11,8 +11,6 @@
 	<ui:define name="content">
 		<div class="header-line">Вы вошли как сотрудник | <h:form><h:commandLink action="#{ logoutBean.logout() }" value="Выйти"></h:commandLink></h:form></div>
 	
-
-import javax.faces.bean.ManagedProperty;
 		<hr style="margin: 33px 0;"></hr>
 		<h3 style="margin: 33px 0 11px 0;">Водители</h3>
 		<h:panelGroup rendered="#{employeeDriversBean.edit}">

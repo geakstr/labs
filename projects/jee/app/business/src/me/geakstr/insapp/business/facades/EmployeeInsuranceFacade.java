@@ -1,7 +1,8 @@
 package me.geakstr.insapp.business.facades;
 
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
@@ -43,20 +44,20 @@ public class EmployeeInsuranceFacade implements ICrudFacade<Insurance> {
 	}
 	
 	public void save(final Insurance insurance, final List<Driver> drivers) {
-		final List<Driver> currentDrivers = insuranceDao.findDrivers(insurance);
+		final List<InsuranceToDriver> insuranceToDrivers = insurance.getInsuranceToDrivers();
 		
-		for (final Driver currentDriver : currentDrivers) {
-			if (!drivers.contains(currentDriver)) {
-				final InsuranceToDriver itd = insuranceToDriverDao.find(insurance, currentDriver);
-				
-				if (itd != null) {
-					System.out.println(itd);
-					
-					insuranceToDriverDao.remove(itd);
-				}
+		Iterator<InsuranceToDriver> it = insuranceToDrivers.iterator();
+		
+		while(it.hasNext()) {
+			final InsuranceToDriver itd = it.next();
+			if (!drivers.contains(itd.getDriver())) {
+				insuranceToDriverDao.remove(itd);
+				it.remove();
 			}
 		}
+		insuranceDao.edit(insurance);
 		
+		final List<Driver> currentDrivers = insuranceToDrivers.stream().map(x -> x.getDriver()).collect(Collectors.toList());
 		for (final Driver driver : drivers) {
 			if (!currentDrivers.contains(driver)) {
 				final InsuranceToDriver itd = new InsuranceToDriver();
