@@ -90,6 +90,10 @@ public class Insurance implements IEntity {
 	public void setCost(Double cost) {
 		this.cost = cost;
 	}
+	
+	public String getFormatedCost() {
+		return String.format("%.2f", cost);
+	}
 
 	public List<InsuranceToDriver> getInsuranceToDrivers() {
 		return insuranceToDrivers;

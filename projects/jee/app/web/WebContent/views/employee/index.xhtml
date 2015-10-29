@@ -135,7 +135,7 @@
 	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
 	              </h:inputText>
               </p>
-              <p>Стоимость:
+              <p>Базовая стоимость:
                 <h:message for="insuranceCost" class="message" style="color: red;" />
               	<h:inputText id="insuranceCost" required="true" requiredMessage="Введите стоимость" value="#{employeeInsuranceBean.item.cost}" />
               </p>
@@ -180,7 +180,7 @@
 	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
 	              </h:inputText>
               </p>
-              <p>Стоимость:
+              <p>Базовая стоимость:
                 <h:message for="insuranceCost" class="message" style="color: red;" />
               	<h:inputText id="insuranceCost" required="true" requiredMessage="Введите стоимость" value="#{employeeInsuranceBean.item.cost}" />
               </p>
@@ -204,7 +204,7 @@
 	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
 	            </h:outputText>
 	          </h:column>
-	          <h:column><f:facet name="header">Стоимость</f:facet>#{item.cost}</h:column>
+	          <h:column><f:facet name="header">Стоимость</f:facet>#{item.getFormatedCost()}</h:column>
 	          <h:column>
 	          	<h:outputText rendered="${item.active}" value="✓" />
 	          	<h:outputText rendered="${!item.active}" value="✗" />
