@@ -13,6 +13,13 @@
 	
 		<hr style="margin: 33px 0;"></hr>
 		<h3 style="margin: 33px 0 11px 0;">Водители</h3>
+		<h:panelGroup>
+			<h4 style="margin: 7px 0;">Поиск по лицензии</h4>
+			<h:form>
+				<h:inputText value="#{employeeDriversBean.query}" />
+				<h:commandButton value="Искать" action="#{employeeDriversBean.query()}" />
+			</h:form>
+		</h:panelGroup>
 		<h:panelGroup rendered="#{employeeDriversBean.edit}">
             <h4 style="margin: 7px 0;">Редактирование</h4>
             <h:form>
@@ -38,8 +45,20 @@
 		<div style="margin-top: 11px;" id="driver-table">
 			<h:form>
 				<h:dataTable id="driver-table" value="#{employeeDriversBean.items}" var="item">
-					<h:column><f:facet name="header">ФИО</f:facet>#{item.fio}</h:column>
-					<h:column><f:facet name="header">Лицензия</f:facet>#{item.license}</h:column>
+				    <h:column>
+		          	  <f:facet name="header">
+		          		<h:commandLink action="#{employeeDriversBean.sortByFio}">
+				    	   ФИО
+				    	</h:commandLink>
+		          	  </f:facet>#{item.fio}
+		            </h:column>
+		            <h:column>
+		          	  <f:facet name="header">
+		          		<h:commandLink action="#{employeeDriversBean.sortByLicense}">
+				    	   Лицензия
+				    	</h:commandLink>
+		          	  </f:facet>#{item.license}
+		            </h:column>
 					<h:column><h:commandButton value="Редактировать" action="#{employeeDriversBean.edit(item)}" /></h:column>
 		            <h:column><h:commandButton class="dangerous-button" value="Удалить" action="#{employeeDriversBean.delete(item)}" /></h:column>
 				</h:dataTable>
@@ -48,6 +67,13 @@
 		
 		<hr style="margin: 33px 0;"></hr>
 	    <h3 style="margin: 33px 0 11px 0;">Машины</h3>
+	    <h:panelGroup>
+			<h4 style="margin: 7px 0;">Поиск по номеру машины</h4>
+			<h:form>
+				<h:inputText value="#{employeeCarsBean.query}" />
+				<h:commandButton value="Искать" action="#{employeeCarsBean.query()}" />
+			</h:form>
+		</h:panelGroup>
 	    <h:panelGroup rendered="#{employeeCarsBean.edit}">
             <h4 style="margin: 7px 0;">Редактирование</h4>
             <h:form>
@@ -91,10 +117,22 @@
 	    <div style="margin-top: 11px;" id="cars-table">
 	      <h:form>
 	        <h:dataTable id="cars-table" value="#{employeeCarsBean.items}" var="item">
-	          <h:column><f:facet name="header">Номер</f:facet>#{item.car_num}</h:column>
+	         <h:column>
+	          	<f:facet name="header">
+	          		<h:commandLink action="#{employeeCarsBean.sortByNum}">
+			    	   Номер
+			    	</h:commandLink>
+	          	</f:facet>#{item.car_num}
+	          </h:column>
 	          <h:column><f:facet name="header">Модель</f:facet>#{item.car_model}</h:column>
 	          <h:column><f:facet name="header">Мощность</f:facet>#{item.car_power}</h:column>
-	          <h:column><f:facet name="header">Лицензия</f:facet>#{item.driver.license}</h:column>
+	          <h:column>
+	          	<f:facet name="header">
+	          		<h:commandLink action="#{employeeCarsBean.sortByLicense}">
+			    	   Лицензия
+			    	</h:commandLink>
+	          	</f:facet>#{item.driver.license}
+	          </h:column>
 	          <h:column><h:commandButton value="Редактировать" action="#{employeeCarsBean.edit(item)}" /></h:column>
 	          <h:column><h:commandButton class="dangerous-button" value="Удалить" action="#{employeeCarsBean.delete(item)}" /></h:column>
 	        </h:dataTable>
@@ -103,6 +141,13 @@
 	    
 	    <hr style="margin: 33px 0;"></hr>
 	    <h3 style="margin: 33px 0 11px 0;">Страховки</h3>
+	    <h:panelGroup>
+			<h4 style="margin: 7px 0;">Поиск по номеру страховки</h4>
+			<h:form>
+				<h:inputText value="#{employeeInsuranceBean.query}" />
+				<h:commandButton value="Искать" action="#{employeeInsuranceBean.query()}" />
+			</h:form>
+		</h:panelGroup>
 	    <h:panelGroup rendered="#{employeeInsuranceBean.edit}">
             <h4 style="margin: 7px 0;">Редактирование</h4>
             <h:form>
@@ -190,21 +235,47 @@
 	    <div style="margin-top: 11px;" id="insurances-table">
 	      <h:form>
 	        <h:dataTable id="insurances-table" value="#{employeeInsuranceBean.items}" var="item">
-	          <h:column><f:facet name="header">ID</f:facet>#{item.id}</h:column>
-	          <h:column><f:facet name="header">Номер</f:facet>#{item.car.car_num}</h:column>
 	          <h:column>
-	          	<f:facet name="header">Начало</f:facet>
-	          	<h:outputText value="#{item.date_from}">  
+          	    <f:facet name="header">
+          		  <h:commandLink action="#{employeeInsuranceBean.sortByID}">
+		    	    ID
+		    	  </h:commandLink>
+          	    </f:facet>#{item.id}
+              </h:column>
+              <h:column>
+          	    <f:facet name="header">
+          		  <h:commandLink action="#{employeeInsuranceBean.sortByNum}">
+		    	    Номер
+		    	  </h:commandLink>
+          	    </f:facet>#{item.car.car_num}
+              </h:column>
+              <h:column>
+          	    <f:facet name="header">
+          		  <h:commandLink action="#{employeeInsuranceBean.sortByDateFrom}">
+		    	    Начало
+		    	  </h:commandLink>
+          	    </f:facet>
+                <h:outputText value="#{item.date_from}">  
 	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
 	            </h:outputText>
-	          </h:column>
-	          <h:column>
-	          	<f:facet name="header">Конец</f:facet>
-	          	<h:outputText value="#{item.date_to}">  
+              </h:column>
+			  <h:column>
+          	    <f:facet name="header">
+          		  <h:commandLink action="#{employeeInsuranceBean.sortByDateTo}">
+		    	    Конец
+		    	  </h:commandLink>
+          	    </f:facet>
+                <h:outputText value="#{item.date_to}">  
 	                  <f:convertDateTime pattern="dd.MM.yyyy"/>  
 	            </h:outputText>
-	          </h:column>
-	          <h:column><f:facet name="header">Стоимость</f:facet>#{item.getFormatedCost()}</h:column>
+              </h:column>
+              <h:column>
+          	    <f:facet name="header">
+          		  <h:commandLink action="#{employeeInsuranceBean.sortByCost}">
+		    	    Стоимость
+		    	  </h:commandLink>
+          	    </f:facet>#{item.getFormatedCost()}
+              </h:column>
 	          <h:column>
 	          	<h:outputText rendered="${item.active}" value="✓" />
 	          	<h:outputText rendered="${!item.active}" value="✗" />

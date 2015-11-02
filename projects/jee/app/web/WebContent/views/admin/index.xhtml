@@ -23,7 +23,9 @@
         <h:panelGroup rendered="#{!adminBean.edit}">
             <h3 style="margin: 33px 0 11px 0;">Добавление сотрудника</h3>
             <h:form>
-            	<p>ФИО: <h:inputText value="#{adminBean.item.fio}" /> | Логин: <h:inputText value="#{adminBean.item.username}" /> | Пароль: <h:inputText value="#{adminBean.item.password}" /></p>
+            	<p>ФИО: <h:inputText value="#{adminBean.item.fio}" /></p>
+            	<p>Логин: <h:inputText value="#{adminBean.item.username}" /></p>
+            	<p>Пароль: <h:inputText value="#{adminBean.item.password}" /></p>
                 <p><h:commandButton value="Добавить" action="#{adminBean.add}" /></p>
             </h:form>
         </h:panelGroup>

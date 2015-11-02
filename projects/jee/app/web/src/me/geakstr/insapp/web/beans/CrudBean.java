@@ -8,19 +8,17 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
 
 import me.geakstr.insapp.business.facades.ICrudFacade;
 import me.geakstr.insapp.dao.entities.IEntity;
-
+	
 @ManagedBean
 @ViewScoped
 public abstract class CrudBean<T extends IEntity, V extends ICrudFacade<T>> extends BaseBean {	
 	protected List<T> items;
 	protected T item;
 	protected boolean edit;
+	public String query;
 
 	private Class<T> clazz;
 	
@@ -72,6 +70,21 @@ public abstract class CrudBean<T extends IEntity, V extends ICrudFacade<T>> exte
 			e.printStackTrace();
 		}
 	}
+	
+	protected boolean query() {
+		if (query == null) {
+			return true;
+		}
+		
+		query = query.trim();
+		
+		if (query.length() == 0) {
+			items = getFacade().findAll();
+			return true;
+		}
+		
+		return false;
+	}
 
 	public void delete(final T item) {
 		getFacade().delete(item);
@@ -90,5 +103,13 @@ public abstract class CrudBean<T extends IEntity, V extends ICrudFacade<T>> exte
 
 	public boolean isEdit() {
 		return edit;
+	}
+
+	public String getQuery() {
+		return query;
+	}
+
+	public void setQuery(String query) {
+		this.query = query;
 	}
 }
